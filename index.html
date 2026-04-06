@@ -3,64 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BENÍTEZ | Portal</title>
+    <title>BENÍTEZ | Staff</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Creepster&family=Bebas+Neue&display=swap" rel="stylesheet">
     <style>
         :root { --red: #ff0000; --dark: #0a0a0a; }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
         body { background-color: #000; color: white; min-height: 100vh; }
 
-        /* PANTALLA DE LOGIN */
+        /* PANTALLA DE ACCESO */
         #login-screen {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: #000; display: flex; justify-content: center; align-items: center;
-            z-index: 9999;
+            z-index: 10000; /* Prioridad máxima */
         }
         .login-box {
-            background: #0d0d0d; padding: 40px; border-radius: 15px;
-            width: 90%; max-width: 350px; text-align: center; border: 1px solid #222;
+            background: #111; padding: 40px; border-radius: 15px;
+            width: 90%; max-width: 340px; text-align: center; border: 1px solid #333;
         }
         .login-box h1 { font-family: 'Creepster'; color: var(--red); font-size: 40px; margin-bottom: 20px; }
         input { 
             width: 100%; padding: 15px; margin: 10px 0; background: #000; 
-            border: 1px solid #333; color: white; border-radius: 5px; font-size: 16px;
+            border: 1px solid #444; color: white; border-radius: 5px; font-size: 16px; outline: none;
         }
+        input:focus { border-color: var(--red); }
         button { 
             width: 100%; padding: 15px; background: var(--red); color: white; 
             border: none; border-radius: 5px; font-weight: 600; cursor: pointer; margin-top: 10px;
         }
 
-        /* DASHBOARD (OCULTO) */
+        /* DASHBOARD OCULTO POR DEFECTO */
         #dashboard { display: none; }
         
-        /* SIDEBAR */
+        /* DISEÑO DE PANEL */
         .sidebar {
             width: 260px; background: #000; border-right: 1px solid #222;
             height: 100vh; position: fixed; padding: 30px 20px;
         }
         .logo-side { font-family: 'Creepster'; color: var(--red); font-size: 30px; text-align: center; margin-bottom: 40px; }
-        .menu a { 
+        .menu-btn { 
             display: block; font-family: 'Bebas Neue'; font-size: 22px; padding: 12px; 
-            color: #666; cursor: pointer; text-decoration: none; text-align: center; margin-bottom: 10px;
+            color: #777; cursor: pointer; text-align: center; margin-bottom: 10px; border-radius: 5px;
         }
-        .menu a.active { color: white; border-bottom: 2px solid var(--red); }
+        .menu-btn.active { color: white; background: rgba(255,0,0,0.15); border-left: 4px solid var(--red); }
 
-        /* CONTENIDO */
         .main-content { margin-left: 260px; padding: 40px; }
         .section { display: none; }
         .section.active { display: block; }
-        .card { background: #0d0d0d; padding: 25px; border-radius: 10px; border: 1px solid #222; margin-bottom: 20px; }
+
+        /* TARJETAS DE IDENTIDAD */
+        .card { background: #0d0d0d; padding: 25px; border-radius: 12px; border: 1px solid #222; margin-bottom: 20px; }
         h2 { font-family: 'Bebas Neue'; font-size: 3rem; color: var(--red); margin-bottom: 20px; }
-        h3 { font-family: 'Bebas Neue'; margin: 15px 0; color: #fff; border-left: 3px solid var(--red); padding-left: 10px; }
+        h3 { font-family: 'Bebas Neue'; margin: 15px 0; color: #fff; border-bottom: 1px solid var(--red); display: inline-block; padding-bottom: 5px; }
         .highlight { color: var(--red); font-weight: 600; }
 
-        /* RESPONSIVO */
         @media (max-width: 768px) {
-            .sidebar { width: 100%; height: auto; position: relative; border-right: none; }
+            .sidebar { width: 100%; height: auto; position: relative; border-right: none; padding: 15px; }
             .main-content { margin-left: 0; padding: 20px; }
         }
 
-        .logout-btn { position: fixed; top: 15px; right: 15px; color: var(--red); cursor: pointer; font-size: 12px; font-weight: bold; border: 1px solid var(--red); padding: 5px 10px; border-radius: 5px; }
+        .logout { position: fixed; top: 15px; right: 15px; color: var(--red); cursor: pointer; font-size: 11px; font-weight: bold; padding: 5px; z-index: 100; }
     </style>
 </head>
 <body>
@@ -70,54 +71,60 @@
             <h1>BENÍTEZ</h1>
             <input type="text" id="userInput" placeholder="Usuario">
             <input type="password" id="passInput" placeholder="Contraseña">
-            <button id="btnEntrar">ENTRAR</button>
-            <p id="errorLog" style="color:red; font-size:12px; margin-top:10px;"></p>
+            <button onclick="intentarEntrar()">ENTRAR</button>
+            <p id="errorMsg" style="color:red; font-size:12px; margin-top:10px;"></p>
         </div>
     </div>
 
     <div id="dashboard">
-        <div class="logout-btn" id="btnLogOut">CERRAR SESIÓN</div>
+        <div class="logout" onclick="cerrarSesion()">CERRAR SESIÓN</div>
+        
         <div class="sidebar">
             <div class="logo-side">BENÍTEZ</div>
-            <div class="menu">
-                <a onclick="showSection('identidad')" id="link-identidad" class="active">Identidad</a>
-                <a onclick="showSection('equipo')" id="link-equipo">Equipo</a>
-                <a onclick="showSection('canciones')" id="link-canciones">Canciones</a>
-            </div>
+            <div class="menu-btn active" id="btn-id" onclick="ver('identidad')">Identidad</div>
+            <div class="menu-btn" id="btn-eq" onclick="ver('equipo')">Equipo</div>
+            <div class="menu-btn" id="btn-ca" onclick="ver('canciones')">Canciones</div>
         </div>
 
         <div class="main-content">
             <div id="identidad" class="section active">
                 <h2>Identidad</h2>
                 <div class="card">
-                    <p class="highlight" style="font-size: 1.2rem;">“El man que les gusta a las mujeres, pero con calle real”</p>
+                    <p class="highlight" style="font-size: 1.3rem;">“El man que les gusta a las mujeres, pero con calle real”</p>
                     <p style="margin-top:10px;">Atractivo, reservado, confiado y emocional pero no débil.</p>
                 </div>
                 <div class="card">
-                    <h3>🔗 USO DE IDENTIDAD POR EQUIPO</h3>
-                    <p><strong>TOMÁS:</strong> Adapta TODO el contenido y estética a este concepto.</p>
-                    <p><strong>SEBASTIÁN:</strong> Graba miradas y actitud. Busca que el artista transmita y no se vea plano.</p>
-                    <p><strong>MAZO + TETO:</strong> Oportunidades que encajen exclusivamente con esta imagen.</p>
+                    <h3>💔 LADO MUJERES</h3>
+                    <p>Transmitir seguridad y deseo. Letras sobre relaciones reales e infidelidad.</p>
+                    <h3>🖤 LADO CALLE</h3>
+                    <p>Energía firme y seria. Estética oscura, elegante pero callejera.</p>
+                </div>
+                <div class="card">
+                    <h3 style="color: var(--red);">🔗 TRABAJO EN EQUIPO</h3>
+                    <p><strong>TOMÁS:</strong> Adapta contenido y estética al concepto.</p>
+                    <p><strong>SEBASTIÁN:</strong> Graba miradas y actitud potente.</p>
+                    <p><strong>MAZO+TETO:</strong> Buscan negocios que sumen a esta imagen.</p>
                 </div>
             </div>
 
             <div id="equipo" class="section">
-                <h2>Staff</h2>
+                <h2>Staff Oficial</h2>
                 <div class="card">
-                    <p><strong>Mazo + Teto:</strong> Management</p>
-                    <p><strong>Andrés Parra:</strong> Co-Manager & DJ</p>
-                    <p><strong>Tomás Gallego:</strong> Marketing</p>
-                    <p><strong>Sebastián Muñoz:</strong> Film & Foto</p>
-                    <p><strong>Yerson / Angelo:</strong> Logística</p>
+                    <p>• <strong>Mazo + Teto:</strong> Management</p>
+                    <p>• <strong>Andrés Parra:</strong> Co-Manager & DJ</p>
+                    <p>• <strong>Tomás Gallego:</strong> Marketing</p>
+                    <p>• <strong>Sebastián Muñoz:</strong> Film & Foto</p>
+                    <p>• <strong>Yerson / Angelo:</strong> Logística</p>
                 </div>
             </div>
 
             <div id="canciones" class="section">
-                <h2>Drive</h2>
+                <h2>Drive Privado</h2>
                 <div class="card" style="text-align: center;">
+                    <p style="margin-bottom: 20px;">Acceso exclusivo a material de audio.</p>
                     <a href="https://drive.google.com/drive/folders/1vCpXlgufFSmUJyJj7qVpS10hlOPE5GhJ?usp=drive_link" target="_blank" 
                        style="background:red; color:white; padding:15px 30px; text-decoration:none; font-weight:bold; border-radius:5px; display:inline-block;">
-                       ACCEDER AL DRIVE
+                       ABRIR CARPETA
                     </a>
                 </div>
             </div>
@@ -125,47 +132,49 @@
     </div>
 
     <script>
-        const loginScreen = document.getElementById('login-screen');
-        const dashboard = document.getElementById('dashboard');
-
-        function login() {
+        function intentarEntrar() {
             const u = document.getElementById('userInput').value;
             const p = document.getElementById('passInput').value;
 
+            // Validación directa
             if (u === "equipo" && p === "benitez2026") {
-                localStorage.setItem('session', 'true');
-                render();
+                document.getElementById('login-screen').style.display = 'none';
+                document.getElementById('dashboard').style.display = 'block';
+                // Intentamos guardar, pero si falla el login seguirá funcionando esta vez
+                try { localStorage.setItem('sesion_benitez', 'true'); } catch(e) {}
             } else {
-                document.getElementById('errorLog').innerText = "Datos incorrectos";
+                document.getElementById('errorMsg').innerText = "Credenciales incorrectas";
             }
         }
 
-        function logout() {
-            localStorage.removeItem('session');
+        function cerrarSesion() {
+            try { localStorage.removeItem('sesion_benitez'); } catch(e) {}
             location.reload();
         }
 
-        function render() {
-            if (localStorage.getItem('session') === 'true') {
-                loginScreen.style.display = 'none';
-                dashboard.style.display = 'block';
-            }
-        }
-
-        function showSection(id) {
+        function ver(seccionId) {
+            // Ocultar todas
             document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-            document.querySelectorAll('.menu a').forEach(a => a.classList.remove('active'));
-            document.getElementById(id).classList.add('active');
-            document.getElementById('link-' + id).classList.add('active');
+            document.querySelectorAll('.menu-btn').forEach(b => b.classList.remove('active'));
+            
+            // Mostrar la correcta
+            document.getElementById(seccionId).classList.add('active');
+            
+            // Activar botón del menú (mapeo simple)
+            if(seccionId === 'identidad') document.getElementById('btn-id').classList.add('active');
+            if(seccionId === 'equipo') document.getElementById('btn-eq').classList.add('active');
+            if(seccionId === 'canciones') document.getElementById('btn-ca').classList.add('active');
         }
 
-        document.getElementById('btnEntrar').onclick = login;
-        document.getElementById('btnLogOut').onclick = logout;
-        
-        // Tecla enter para entrar
-        window.onkeypress = function(e) { if(e.keyCode === 13) login(); };
-
-        window.onload = render;
+        // Revisar sesión al cargar
+        window.onload = function() {
+            try {
+                if (localStorage.getItem('sesion_benitez') === 'true') {
+                    document.getElementById('login-screen').style.display = 'none';
+                    document.getElementById('dashboard').style.display = 'block';
+                }
+            } catch(e) {}
+        }
     </script>
 </body>
 </html>

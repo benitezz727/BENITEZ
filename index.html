@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BENÍTEZ | Staff Pro</title>
+<title>BENÍTEZ | Staff</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Creepster&family=Bebas+Neue&display=swap" rel="stylesheet">
 
@@ -11,10 +11,14 @@
 
 :root{
 --red:#ff0000;
---dark:#0a0a0a;
 }
 
-*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins;}
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins;
+}
 
 body{
 background:#000;
@@ -38,7 +42,8 @@ z-index:9999;
 background:#111;
 padding:40px;
 border-radius:15px;
-width:320px;
+width:90%;
+max-width:340px;
 text-align:center;
 border:1px solid #333;
 }
@@ -57,6 +62,7 @@ margin:10px 0;
 background:#000;
 border:1px solid #444;
 color:white;
+border-radius:6px;
 }
 
 button{
@@ -67,9 +73,10 @@ border:none;
 color:white;
 font-weight:600;
 cursor:pointer;
+border-radius:6px;
 }
 
-/* DASHBOARD */
+/* PANEL */
 
 #dashboard{display:none;}
 
@@ -93,12 +100,13 @@ margin-bottom:40px;
 .menu-btn{
 font-family:'Bebas Neue';
 font-size:26px;
-padding:15px;
+padding:16px;
 text-align:center;
 color:#777;
 cursor:pointer;
-margin-bottom:12px;
+margin-bottom:15px;
 border-radius:6px;
+transition:.3s;
 }
 
 .menu-btn.active{
@@ -121,6 +129,7 @@ padding:25px;
 border-radius:12px;
 border:1px solid #222;
 margin-bottom:20px;
+line-height:1.6;
 }
 
 h2{
@@ -137,22 +146,30 @@ right:15px;
 color:red;
 cursor:pointer;
 font-size:12px;
+font-weight:bold;
 }
 
+/* MOBILE */
+
 @media(max-width:768px){
+
 .sidebar{
 width:100%;
 height:auto;
 position:relative;
+border-right:none;
 }
+
 .main{
 margin-left:0;
 padding:20px;
 }
+
 .menu-btn{
-font-size:32px;
-padding:20px;
+font-size:34px;
+padding:22px;
 }
+
 }
 
 </style>
@@ -169,12 +186,12 @@ padding:20px;
 <input id="pass" type="password" placeholder="Contraseña">
 
 <button onclick="login()">ENTRAR</button>
-<p id="error" style="color:red;font-size:12px"></p>
+<p id="error" style="color:red;font-size:12px;margin-top:10px;"></p>
 
 </div>
 </div>
 
-<!-- PANEL -->
+<!-- DASHBOARD -->
 <div id="dashboard">
 
 <div class="logout" onclick="logout()">CERRAR SESIÓN</div>
@@ -182,36 +199,68 @@ padding:20px;
 <div class="sidebar">
 <div class="logo-side">BENÍTEZ</div>
 
-<div id="menu"></div>
+<div class="menu-btn active" onclick="openTab('identidad',this)">IDENTIDAD</div>
+<div class="menu-btn" onclick="openTab('equipo',this)">EQUIPO</div>
+<div class="menu-btn" onclick="openTab('canciones',this)">CANCIONES</div>
 
 </div>
 
 <div class="main">
 
 <!-- IDENTIDAD -->
-<div id="identidad" class="section">
+<div id="identidad" class="section active">
 <h2>Identidad</h2>
+
 <div class="card">
-“El man que les gusta a las mujeres, pero con calle real”
+<strong>“El man que les gusta a las mujeres, pero con calle real”</strong>
+<p style="color:#aaa;margin-top:10px;">
+No es un niño lindo sin fondo ni calle sin atractivo. Es el equilibrio perfecto.
+</p>
 </div>
+
 </div>
 
 <!-- EQUIPO -->
 <div id="equipo" class="section">
 <h2>Equipo</h2>
-<div class="card">Panel interno del staff.</div>
+
+<div class="card">
+🧠 <strong>MAZO — Manager</strong><br>
+Moverse, aparecer y generar respeto en el mundo real.
+</div>
+
+<div class="card">
+📈 <strong>TOMÁS — Marketing</strong><br>
+Convierte todo en percepción y crecimiento.
+</div>
+
+<div class="card">
+🎥 <strong>SEBASTIÁN — Cámara</strong><br>
+Nada importante se pierde sin grabarse.
+</div>
+
+<div class="card">
+⚙ Staff Apoyo:<br>
+Andrés Parra — DJ<br>
+Yerson / Angelo — Logística
+</div>
+
 </div>
 
 <!-- CANCIONES -->
 <div id="canciones" class="section">
 <h2>Canciones</h2>
+
 <div class="card" style="text-align:center">
+
 <a href="https://drive.google.com/drive/folders/1vCpXlgufFSmUJyJj7qVpS10hlOPE5GhJ?usp=drive_link"
 target="_blank"
 style="background:red;padding:15px 30px;color:white;text-decoration:none;font-weight:bold;border-radius:6px;">
 ABRIR DRIVE
 </a>
+
 </div>
+
 </div>
 
 </div>
@@ -219,77 +268,39 @@ ABRIR DRIVE
 
 <script>
 
-/* ===== USUARIOS PRO ===== */
+/* LOGIN SIMPLE (TODOS VEN LO MISMO) */
 
-const USERS={
-equipo:{pass:"benitez2026",role:"admin"},
-mazo:{pass:"manager",role:"manager"},
-tomas:{pass:"marketing",role:"marketing"},
-sebastian:{pass:"camara",role:"camara"}
-};
-
-/* ===== PERMISOS ===== */
-
-const PERMISSIONS={
-admin:["identidad","equipo","canciones"],
-manager:["identidad","equipo","canciones"],
-marketing:["identidad","canciones"],
-camara:["canciones"]
-};
-
-/* LOGIN */
+const USER="equipo";
+const PASS="benitez2026";
 
 function login(){
 
-const u=document.getElementById("user").value.toLowerCase();
-const p=document.getElementById("pass").value;
+let u=document.getElementById("user").value;
+let p=document.getElementById("pass").value;
 
-if(USERS[u] && USERS[u].pass===p){
+if(u===USER && p===PASS){
 
-localStorage.setItem("bnzUser",u);
-loadDashboard();
+localStorage.setItem("bnzAccess","ok");
+loadPanel();
 
 }else{
 document.getElementById("error").innerText="Acceso incorrecto";
 }
 }
 
-/* LOAD */
-
-function loadDashboard(){
-
-const user=localStorage.getItem("bnzUser");
-if(!user)return;
-
+function loadPanel(){
+if(localStorage.getItem("bnzAccess")==="ok"){
 document.getElementById("login-screen").style.display="none";
 document.getElementById("dashboard").style.display="block";
-
-buildMenu(USERS[user].role);
+}
 }
 
-/* MENU DINÁMICO */
-
-function buildMenu(role){
-
-const menu=document.getElementById("menu");
-menu.innerHTML="";
-
-PERMISSIONS[role].forEach(sec=>{
-
-const btn=document.createElement("div");
-btn.className="menu-btn";
-btn.innerText=sec.toUpperCase();
-
-btn.onclick=()=>openTab(sec);
-
-menu.appendChild(btn);
-
-});
-
-openTab(PERMISSIONS[role][0]);
+function logout(){
+localStorage.removeItem("bnzAccess");
+location.reload();
 }
 
-function openTab(id){
+function openTab(id,btn){
 
 document.querySelectorAll(".section")
 .forEach(s=>s.classList.remove("active"));
@@ -299,15 +310,10 @@ document.getElementById(id).classList.add("active");
 document.querySelectorAll(".menu-btn")
 .forEach(b=>b.classList.remove("active"));
 
-event.target.classList.add("active");
+btn.classList.add("active");
 }
 
-function logout(){
-localStorage.removeItem("bnzUser");
-location.reload();
-}
-
-window.onload=loadDashboard;
+window.onload=loadPanel;
 
 </script>
 

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -39,84 +40,4 @@
     h2{font-family:'Bebas Neue'; font-size:3rem; margin-bottom:20px; border-bottom:2px solid var(--red); display:inline-block;}
     h3{font-family:'Bebas Neue'; color:var(--red); font-size:1.8rem; margin:20px 0 10px 0;}
     .card{background:var(--dark); padding:25px; border-radius:15px; border:1px solid #222; margin-bottom:20px; line-height:1.6;}
-    .grid-2{display:grid; grid-template-columns: 1fr 1fr; gap:20px;}
-    .highlight{color:var(--red); font-weight:600;}
-    
-    /* TEAM GRID */
-    .team-grid{display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:20px;}
-    .member{background:#050505; padding:25px; border-radius:15px; border:1px solid #222; transition:0.3s;}
-    .member:hover{border-color:var(--red); transform:translateY(-5px);}
-    .member h4{font-family:'Bebas Neue'; font-size:1.6rem;}
-    .role{color:var(--red); font-size:12px; font-weight:600; text-transform:uppercase; margin-bottom:10px; display:block;}
-    .functions{font-size:13px; color:#999; border-top:1px solid #222; margin-top:10px; padding-top:10px;}
-
-    /* BOTONES */
-    .logout-btn{position:fixed; top:20px; right:20px; color:var(--red); border:1px solid var(--red); padding:5px 15px; border-radius:5px; cursor:pointer; font-weight:600; font-size:12px; z-index:200;}
-    .drive-btn{display:inline-block; background:var(--red); color:white; padding:15px 30px; text-decoration:none; border-radius:50px; font-weight:600; margin-top:20px;}
-
-    /* MOBILE */
-    @media(max-width:768px){
-        .sidebar{width:100%; height:auto; position:relative;}
-        .main-content{margin-left:0; padding:20px;}
-        .wrapper{flex-direction:column;}
-        .grid-2{grid-template-columns: 1fr;}
-    }
-</style>
-</head>
-<body>
-
-<div id="login-screen" class="login-container">
-    <div class="login-box">
-        <h1>BENÍTEZ</h1>
-        <input id="userInput" placeholder="Usuario">
-        <input id="passInput" type="password" placeholder="Contraseña">
-        <button onclick="handleLogin()">Entrar</button>
-        <p id="errorLog" style="color:red; margin-top:10px; font-size:12px;"></p>
-    </div>
-</div>
-
-<div id="dashboard">
-    <div class="logout-btn" onclick="handleLogout()">CERRAR SESIÓN</div>
-    
-    <div class="wrapper">
-        <div class="sidebar">
-            <div class="logo-side">BENÍTEZ</div>
-            <div class="menu">
-                <a onclick="showSection('identidad')" id="link-identidad" class="active">Identidad</a>
-                <a onclick="showSection('equipo')" id="link-equipo">Equipo</a>
-                <a onclick="showSection('canciones')" id="link-canciones">Canciones</a>
-            </div>
-        </div>
-
-        <div class="main-content">
-            
-            <div id="identidad" class="section active">
-                <h2>Identidad de Marca</h2>
-                
-                <div class="card">
-                    <h3>🎯 CONCEPTO BASE</h3>
-                    <p class="highlight" style="font-size:1.2rem;">“El man que les gusta a las mujeres, pero con calle real”</p>
-                    <p>Mezcla final: Atractivo, reservado, confiado y emocional pero no débil.</p>
-                </div>
-
-                <div class="grid-2">
-                    <div class="card">
-                        <h3>💔 LADO MUJERES</h3>
-                        <p><strong>Transmitir:</strong> Seguridad, misterio, deseo y peligro sutil.</p>
-                        <p><strong>Letras:</strong> Infidelidad, tentación, lo que ellas sienten pero no dicen.</p>
-                        <p class="highlight">Actitud: Tranquilo, seguro, en control.</p>
-                    </div>
-                    <div class="card">
-                        <h3>🖤 LADO CALLE</h3>
-                        <p><strong>Energía:</strong> Firme, serio y sin miedo.</p>
-                        <p><strong>Estética:</strong> Oscuro, elegante pero calle. Sencillo pero con flow.</p>
-                        <p class="highlight">Forma de hablar: Natural y con carácter.</p>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <h3>⚠️ ERRORES PROHIBIDOS</h3>
-                    <p>❌ <strong>SER DEMASIADO TIERNO:</strong> Te baja la percepción de calle.</p>
-                    <p>❌ <strong>SER DEMASIADO DURO:</strong> Pierdes el público femenino.</p>
-                    <p>❌ <strong>FORZAR PERSONAJE:</strong> La gente nota la falta de esencia.</p>
-                </div>
+    .grid-2{display:grid; grid-template-columns: 1fr 1

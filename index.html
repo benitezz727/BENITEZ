@@ -3,18 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BENÍTEZ | Staff</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Creepster&family=Bebas+Neue&display=swap" rel="stylesheet">
+<title>BENITEZ</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
 
-:root{
---red:#ff0000;
---black:#000;
---dark:#0a0a0a;
-}
-
+/* ===== RESET ===== */
 *{
 margin:0;
 padding:0;
@@ -23,183 +19,177 @@ font-family:'Poppins',sans-serif;
 }
 
 body{
-background:#000;
+background:#0b0b0b;
 color:white;
+scroll-behavior:smooth;
 }
 
-/* LOGIN */
-
-#login-screen{
-position:fixed;
-width:100%;
-height:100%;
+/* ===== LOGIN ===== */
+#login{
+height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-background:#000;
-z-index:999;
+background:black;
 }
 
 .login-box{
 background:#111;
 padding:40px;
-border-radius:15px;
-width:90%;
-max-width:340px;
+border-radius:12px;
 text-align:center;
-border:1px solid #222;
+width:320px;
 }
 
-.login-box h1{
-font-family:'Creepster';
-color:var(--red);
-font-size:42px;
+.login-box h2{
 margin-bottom:20px;
+color:#ff1a1a;
 }
 
 input{
 width:100%;
-padding:14px;
+padding:12px;
 margin:10px 0;
-background:#000;
-border:1px solid #333;
+background:#1a1a1a;
+border:none;
 color:white;
 border-radius:6px;
 }
 
 button{
 width:100%;
-padding:14px;
-background:var(--red);
+padding:12px;
+background:#ff1a1a;
 border:none;
 color:white;
-font-weight:600;
-cursor:pointer;
+font-weight:bold;
 border-radius:6px;
-}
-
-/* APP */
-
-#dashboard{display:none;}
-
-.topbar{
-padding:20px;
-text-align:center;
-border-bottom:1px solid #111;
-font-family:'Creepster';
-font-size:32px;
-color:var(--red);
-}
-
-.menu{
-display:flex;
-justify-content:center;
-gap:20px;
-padding:20px;
-}
-
-.menu-btn{
-background:#0d0d0d;
-border:1px solid #222;
-padding:18px;
-border-radius:14px;
 cursor:pointer;
-width:160px;
-text-align:center;
-transition:.3s;
 }
 
-.menu-btn:hover{
-border:1px solid var(--red);
+/* ===== PANEL ===== */
+#panel{
+display:none;
 }
 
-.menu-btn.active{
-border:1px solid var(--red);
-background:#140000;
+/* HEADER */
+header{
+position:fixed;
+top:0;
+width:100%;
+background:black;
+padding:18px 30px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+border-bottom:1px solid #222;
+z-index:999;
 }
 
-.icon{
-font-size:70px;
-color:white;
-filter: grayscale(100%) brightness(200%);
-margin-bottom:10px;
-}
-
-.menu-title{
-font-family:'Bebas Neue';
+.logo{
 font-size:26px;
-letter-spacing:1px;
+font-weight:700;
+cursor:pointer;
+color:#ff1a1a;
 }
 
-/* CONTENT */
+nav a{
+margin-left:25px;
+cursor:pointer;
+font-weight:500;
+}
 
-.content{
-padding:25px;
-max-width:900px;
+/* SECCIONES */
+section{
+min-height:100vh;
+padding:120px 30px 60px;
+max-width:1100px;
 margin:auto;
 }
 
-.section{display:none;}
-.section.active{display:block;}
-
-.card{
-background:#0d0d0d;
+/* ===== HOME ===== */
+.home-box{
+background:#121212;
+padding:40px;
+border-radius:14px;
 border:1px solid #222;
+}
+
+.home-box h1{
+font-size:32px;
+color:#ff1a1a;
+margin-bottom:20px;
+}
+
+.home-box p{
+opacity:.85;
+line-height:1.7;
+}
+
+/* ===== EQUIPO ===== */
+.team-container{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:20px;
+margin-top:30px;
+}
+
+.member{
+background:#141414;
 padding:25px;
 border-radius:12px;
-margin-bottom:20px;
+border:1px solid #222;
+transition:.3s;
 }
 
-h2{
-font-family:'Bebas Neue';
-color:var(--red);
-font-size:40px;
-margin-bottom:20px;
+.member:hover{
+transform:translateY(-5px);
+border-color:#ff1a1a;
 }
 
-.role{
-color:var(--red);
-font-size:12px;
-margin-bottom:6px;
-font-weight:bold;
+.member h3{
+color:#ff1a1a;
+margin-bottom:8px;
 }
 
-.drive-btn{
-display:inline-block;
-margin-top:20px;
-background:var(--red);
-color:white;
-padding:15px 30px;
-text-decoration:none;
-border-radius:6px;
-font-weight:bold;
-}
-
-.logout{
-position:fixed;
-top:15px;
-right:15px;
-color:var(--red);
+/* ===== BOTONES GRANDES ===== */
+.big-button{
+display:flex;
+justify-content:center;
+align-items:center;
+height:160px;
+background:#141414;
+border-radius:16px;
+font-size:24px;
+font-weight:600;
+border:1px solid #222;
 cursor:pointer;
-font-size:12px;
+transition:.3s;
+text-decoration:none;
+color:white;
+}
+
+.big-button:hover{
+background:#ff1a1a;
+transform:scale(1.04);
+}
+
+.buttons{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:25px;
+margin-top:30px;
 }
 
 /* MOBILE */
-
 @media(max-width:768px){
-
-.menu{
-flex-direction:row;
+.buttons{
+grid-template-columns:1fr;
 }
-
-.menu-btn{
-width:45%;
+.big-button{
+font-size:28px;
+height:190px;
 }
-
-.icon{
-font-size:60px;
-}
-
 }
 
 </style>
@@ -208,132 +198,132 @@ font-size:60px;
 <body>
 
 <!-- LOGIN -->
-<div id="login-screen">
+<div id="login">
 <div class="login-box">
-<h1>BENÍTEZ</h1>
-<input id="user" placeholder="Usuario">
-<input id="pass" type="password" placeholder="Contraseña">
-<button onclick="login()">ENTRAR</button>
-<p id="error" style="color:red;font-size:12px;margin-top:10px;"></p>
+<h2>Acceso Equipo</h2>
+
+<input type="text" id="user" placeholder="Usuario">
+<input type="password" id="pass" placeholder="Contraseña">
+
+<button onclick="login()">Ingresar</button>
 </div>
 </div>
 
-<!-- APP -->
-<div id="dashboard">
+<!-- PANEL -->
+<div id="panel">
 
-<div class="logout" onclick="logout()">CERRAR SESIÓN</div>
+<header>
+<div class="logo" onclick="goHome()">BENITEZ</div>
 
-<div class="topbar">BENÍTEZ</div>
+<nav>
+<a onclick="goHome()">Home</a>
+<a onclick="scrollToSection('equipo')">Equipo</a>
+<a onclick="scrollToSection('canciones')">Canciones</a>
+</nav>
+</header>
 
-<div class="menu">
+<!-- HOME / IDENTIDAD -->
+<section id="home">
 
-<div class="menu-btn active" id="btnEquipo" onclick="show('equipo')">
-<div class="icon">👥</div>
-<div class="menu-title">EQUIPO</div>
-</div>
+<div class="home-box">
+<h1>Identidad del Artista</h1>
 
-<div class="menu-btn" id="btnCanciones" onclick="show('canciones')">
-<div class="icon">🎵</div>
-<div class="menu-title">CANCIONES</div>
-</div>
-
-</div>
-
-<div class="content">
-
-<!-- EQUIPO -->
-<div id="equipo" class="section active">
-
-<h2>Equipo BENÍTEZ</h2>
-
-<div class="card">
-<div class="role">MANAGER</div>
-<h3>MAZO</h3>
-<p>Presencia en eventos, networking y movimiento real del proyecto.</p>
-</div>
-
-<div class="card">
-<div class="role">MARKETING / CO-MANAGER</div>
-<h3>TOMÁS</h3>
-<p>Convierte todo en percepción, estrategia y crecimiento visual.</p>
-</div>
-
-<div class="card">
-<div class="role">CÁMARA & PERFORMANCE</div>
-<h3>SEBASTIÁN</h3>
-<p>Captura cada momento clave y potencia la imagen del artista.</p>
-</div>
-
-<div class="card">
-<h3>Staff de Apoyo</h3>
-<p>• Andrés Parra — DJ & Control Operativo</p>
-<p>• Yerson — Logística</p>
-<p>• Angelo — Asistente Personal</p>
-</div>
+<p>
+BENITEZ es un proyecto artístico enfocado en una estética calle limpia,
+visual profesional y crecimiento estratégico dentro de la industria musical.
+El objetivo del equipo es construir una marca sólida, coherente y reconocible,
+manteniendo dirección creativa clara y evolución constante.
+</p>
 
 </div>
 
-<!-- CANCIONES -->
-<div id="canciones" class="section">
+<div class="buttons">
 
-<h2>Contenido Privado</h2>
+<div class="big-button" onclick="scrollToSection('equipo')">
+Equipo
+</div>
 
-<div class="card" style="text-align:center;">
-<p>Acceso directo al Drive del proyecto.</p>
-
-<a class="drive-btn"
+<a class="big-button"
 href="https://drive.google.com/drive/folders/1vCpXlgufFSmUJyJj7qVpS10hlOPE5GhJ?usp=drive_link"
 target="_blank">
-ABRIR DRIVE
+Canciones
 </a>
 
 </div>
 
+</section>
+
+<!-- EQUIPO -->
+<section id="equipo">
+
+<h1 style="color:#ff1a1a;">Equipo de Trabajo</h1>
+
+<div class="team-container">
+
+<div class="member">
+<h3>Pablo Mazo</h3>
+<p>Manager</p>
+</div>
+
+<div class="member">
+<h3>Tomas Gallego</h3>
+<p>Marketing</p>
+</div>
+
+<div class="member">
+<h3>Sebastian Muñoz</h3>
+<p>Camarógrafo</p>
+</div>
+
+<div class="member">
+<h3>Yerson</h3>
+<p>Director Logístico</p>
+</div>
+
+<div class="member">
+<h3>Angelo Tamayo</h3>
+<p>Asistente Personal</p>
 </div>
 
 </div>
+
+</section>
+
+<!-- CANCIONES -->
+<section id="canciones">
+<h1 style="color:#ff1a1a;">Canciones</h1>
+
+<a class="big-button"
+href="https://drive.google.com/drive/folders/1vCpXlgufFSmUJyJj7qVpS10hlOPE5GhJ?usp=drive_link"
+target="_blank">
+Abrir Carpeta Drive
+</a>
+
+</section>
+
 </div>
 
 <script>
 
-const USER="equipo";
-const PASS="benitez2026";
-
 function login(){
-let u=document.getElementById("user").value;
-let p=document.getElementById("pass").value;
+const user=document.getElementById("user").value;
+const pass=document.getElementById("pass").value;
 
-if(u===USER && p===PASS){
-localStorage.setItem("bnz","ok");
-load();
+if(user==="benitez" && pass==="2025"){
+document.getElementById("login").style.display="none";
+document.getElementById("panel").style.display="block";
 }else{
-document.getElementById("error").innerText="Acceso incorrecto";
+alert("Datos incorrectos");
 }
 }
 
-function logout(){
-localStorage.removeItem("bnz");
-location.reload();
+function scrollToSection(id){
+document.getElementById(id).scrollIntoView({behavior:"smooth"});
 }
 
-function load(){
-if(localStorage.getItem("bnz")==="ok"){
-document.getElementById("login-screen").style.display="none";
-document.getElementById("dashboard").style.display="block";
+function goHome(){
+window.scrollTo({top:0,behavior:"smooth"});
 }
-}
-
-function show(id){
-document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));
-document.querySelectorAll(".menu-btn").forEach(b=>b.classList.remove("active"));
-
-document.getElementById(id).classList.add("active");
-
-if(id==="equipo") document.getElementById("btnEquipo").classList.add("active");
-if(id==="canciones") document.getElementById("btnCanciones").classList.add("active");
-}
-
-window.onload=load;
 
 </script>
 

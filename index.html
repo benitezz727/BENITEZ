@@ -6,38 +6,28 @@
 <title>BENITEZ</title>
 
 <!-- FUENTES -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Creepster&family=Bebas+Neue&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Creepster&family=Bebas+Neue&display=swap" rel="stylesheet">
 
 <style>
 
 /* RESET */
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
 
 body{
 background:radial-gradient(circle at top,#0a0000,#000 60%);
 color:white;
-min-height:100vh;
 }
 
-/* ================= TIPOGRAFÍA ARTÍSTICA ================= */
+/* TITULOS */
+h1{font-family:'Creepster',cursive;}
+h2,h3{font-family:'Bebas Neue',sans-serif;letter-spacing:2px;}
 
-h1{
-font-family:'Creepster',cursive;
-letter-spacing:4px;
-}
-
-h2{
-font-family:'Bebas Neue',sans-serif;
-letter-spacing:2px;
-font-size:32px;
-}
-
-h3{
-font-family:'Bebas Neue',sans-serif;
-letter-spacing:1px;
-}
-
-/* ================= LOGIN ================= */
+/* LOGIN */
 
 .login-container{
 height:100vh;
@@ -53,14 +43,13 @@ border-radius:20px;
 width:320px;
 text-align:center;
 border:1px solid #111;
-box-shadow:0 0 30px rgba(255,0,0,.08);
 }
 
 .login-box h1{
 color:#ff0000;
-margin-bottom:20px;
 font-size:38px;
-text-shadow:0 0 15px rgba(255,0,0,0.7);
+text-shadow:0 0 15px red;
+margin-bottom:20px;
 }
 
 input{
@@ -79,28 +68,23 @@ padding:12px;
 background:#ff0000;
 border:none;
 color:white;
-font-weight:600;
 border-radius:8px;
 cursor:pointer;
-transition:.3s;
+font-weight:600;
 }
 
-button:hover{
-background:#cc0000;
-}
-
-.error{color:red;margin-top:10px}
-
-/* ================= DASHBOARD ================= */
+/* DASHBOARD */
 
 .dashboard{display:none;}
 
-.container{display:flex;}
+.container{
+display:flex;
+}
 
 /* SIDEBAR */
 
 .sidebar{
-width:240px;
+width:260px;
 background:#000;
 border-right:1px solid #111;
 height:100vh;
@@ -110,83 +94,40 @@ position:fixed;
 
 .logo{
 color:#ff0000;
-font-size:28px;
-font-family:'Creepster',cursive;
-margin-bottom:40px;
+font-size:34px;
+font-family:'Creepster';
+margin-bottom:50px;
 cursor:pointer;
-text-shadow:0 0 12px rgba(255,0,0,0.6);
+text-align:center;
 }
+
+/* MENU GRANDE */
 
 .menu a{
 display:block;
-color:#777;
-margin:15px 0;
+font-size:26px;
+margin:25px 0;
+color:#888;
 cursor:pointer;
 transition:.3s;
+text-align:center;
 }
 
 .menu a:hover{
 color:#ff0000;
-transform:translateX(6px);
+transform:scale(1.05);
 }
 
 /* MAIN */
 
 .main{
-margin-left:240px;
+margin-left:260px;
 padding:40px;
 width:100%;
 }
 
-/* SECTIONS */
-
 .section{display:none;}
 .section.active{display:block}
-
-/* CARDS */
-
-.cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:20px;
-margin-bottom:30px;
-}
-
-.card{
-background:#0a0a0a;
-padding:25px;
-border-radius:15px;
-border:1px solid #111;
-transition:.3s;
-}
-
-.card:hover{
-border:1px solid #ff0000;
-transform:translateY(-4px);
-}
-
-.card p{
-color:#ff0000;
-font-size:22px;
-margin-top:10px;
-}
-
-/* BLOCKS */
-
-.release,.events,.songs{
-background:#0a0a0a;
-padding:25px;
-border-radius:15px;
-border:1px solid #111;
-margin-bottom:30px;
-box-shadow:0 0 20px rgba(255,0,0,.05);
-}
-
-.release h2,
-.events h2,
-.songs h2{
-text-shadow:0 0 10px rgba(255,0,0,0.4);
-}
 
 /* TEAM */
 
@@ -198,10 +139,11 @@ gap:20px;
 
 .member{
 background:#0a0a0a;
-padding:20px;
+padding:25px;
 border-radius:15px;
 border:1px solid #111;
 transition:.3s;
+text-align:center;
 }
 
 .member:hover{
@@ -209,25 +151,37 @@ border:1px solid #ff0000;
 transform:translateY(-5px);
 }
 
-.role{color:#ff0000;margin-top:5px}
+.role{
+color:#ff0000;
+margin-top:6px;
+}
 
-/* DRIVE BUTTON */
+/* CANCIONES */
+
+.songs-box{
+background:#0a0a0a;
+padding:40px;
+border-radius:15px;
+border:1px solid #111;
+text-align:center;
+}
 
 .drive-btn{
 display:inline-block;
-margin-top:20px;
-padding:14px 22px;
+margin-top:25px;
+padding:18px 35px;
 background:#ff0000;
 color:white;
 text-decoration:none;
 border-radius:10px;
+font-size:20px;
 font-weight:600;
 transition:.3s;
 }
 
 .drive-btn:hover{
 background:#cc0000;
-box-shadow:0 0 15px rgba(255,0,0,.5);
+box-shadow:0 0 18px rgba(255,0,0,.5);
 }
 
 /* LOGOUT */
@@ -240,6 +194,34 @@ color:#ff0000;
 cursor:pointer;
 }
 
+/* MOBILE */
+
+@media(max-width:768px){
+
+.sidebar{
+width:100%;
+height:auto;
+position:relative;
+border-right:none;
+border-bottom:1px solid #111;
+}
+
+.menu a{
+font-size:32px;
+margin:18px 0;
+}
+
+.main{
+margin-left:0;
+padding:25px;
+}
+
+.logo{
+font-size:42px;
+}
+
+}
+
 </style>
 </head>
 
@@ -248,60 +230,43 @@ cursor:pointer;
 <!-- LOGIN -->
 <div id="login" class="login-container">
 <div class="login-box">
+
 <h1>BENITEZ</h1>
 
 <input id="user" placeholder="Usuario">
 <input id="pass" type="password" placeholder="Contraseña">
 
 <button id="loginBtn">Entrar</button>
-<p id="error" class="error"></p>
+<p id="error" style="color:red;margin-top:10px;"></p>
+
 </div>
 </div>
 
-<!-- DASHBOARD -->
+<!-- PANEL -->
 <div id="dashboard" class="dashboard">
 
 <div class="logout" id="logoutBtn">Cerrar sesión</div>
 
 <div class="container">
 
+<!-- SIDEBAR -->
 <div class="sidebar">
+
 <div class="logo" id="logoBtn">BENITEZ</div>
 
 <div class="menu">
-<a data-section="home">Dashboard</a>
 <a data-section="team">Equipo</a>
 <a data-section="songs">Canciones</a>
 </div>
+
 </div>
 
+<!-- MAIN -->
 <div class="main">
 
-<!-- HOME -->
-<div id="home" class="section active">
+<!-- EQUIPO -->
+<div id="team" class="section active">
 
-<div class="cards">
-<div class="card"><h3>Reproducciones Totales</h3><p>4.053</p></div>
-<div class="card"><h3>Top País</h3><p>Colombia</p></div>
-<div class="card"><h3>Bogotá</h3><p>1.350</p></div>
-<div class="card"><h3>Medellín</h3><p>1.250</p></div>
-</div>
-
-<div class="release">
-<h2>Último Lanzamiento — Culpables</h2>
-<p>Reproducciones Totales: <span style="color:#ff0000">4.053</span></p>
-<p>Top País: <span style="color:#ff0000">Colombia</span></p>
-</div>
-
-<div class="events">
-<h2>Eventos de la Semana</h2>
-<p style="color:#ff0000">No hay nada programado para esta semana.</p>
-</div>
-
-</div>
-
-<!-- TEAM -->
-<div id="team" class="section">
 <h2>Equipo BENITEZ</h2>
 
 <div class="team-grid">
@@ -317,12 +282,11 @@ cursor:pointer;
 <!-- CANCIONES -->
 <div id="songs" class="section">
 
-<div class="songs">
-<h2>link de Canciones y contenido</h2>
+<h2>Repositorio de Canciones</h2>
 
-<p>
-Acceso al Drive privado del proyecto BENITEZ.
-</p>
+<div class="songs-box">
+
+<p>Acceso privado al Drive del proyecto BENITEZ.</p>
 
 <a class="drive-btn"
 href="https://drive.google.com/drive/folders/1vCpXlgufFSmUJyJj7qVpS10hlOPE5GhJ?usp=drive_link"
@@ -340,25 +304,22 @@ Abrir Google Drive
 
 <script>
 
-document.addEventListener("DOMContentLoaded", function(){
+document.addEventListener("DOMContentLoaded",function(){
 
 const USER="equipo";
-const PASS="benitez2025";
+const PASS="benitez2026";
 
 const login=document.getElementById("login");
 const dashboard=document.getElementById("dashboard");
 
-document.getElementById("loginBtn").onclick=function(){
+loginBtn.onclick=function(){
 
-let u=document.getElementById("user").value;
-let p=document.getElementById("pass").value;
-
-if(u===USER && p===PASS){
+if(user.value===USER && pass.value===PASS){
 login.style.display="none";
 dashboard.style.display="block";
 localStorage.setItem("auth","true");
 }else{
-document.getElementById("error").innerText="Acceso incorrecto";
+error.innerText="Acceso incorrecto";
 }
 };
 
@@ -367,7 +328,7 @@ login.style.display="none";
 dashboard.style.display="block";
 }
 
-document.getElementById("logoutBtn").onclick=function(){
+logoutBtn.onclick=function(){
 localStorage.removeItem("auth");
 location.reload();
 };
@@ -379,9 +340,9 @@ document.getElementById(btn.dataset.section).classList.add("active");
 };
 });
 
-document.getElementById("logoBtn").onclick=function(){
+logoBtn.onclick=function(){
 document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));
-document.getElementById("home").classList.add("active");
+document.getElementById("team").classList.add("active");
 };
 
 });

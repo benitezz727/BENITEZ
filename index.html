@@ -9,23 +9,30 @@
 
 <style>
 
+/* ================= BASE ================= */
+
 :root{
 --red:#ff0000;
+--black:#000;
+--card:#0d0d0d;
 }
 
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Poppins;
+font-family:'Poppins',sans-serif;
 }
 
 body{
-background:#000;
+background:
+radial-gradient(circle at top,#140000,#000 60%);
 color:white;
+min-height:100vh;
+overflow-x:hidden;
 }
 
-/* LOGIN */
+/* ================= LOGIN ================= */
 
 #login-screen{
 position:fixed;
@@ -40,19 +47,22 @@ z-index:9999;
 
 .login-box{
 background:#111;
-padding:40px;
-border-radius:15px;
+padding:45px;
+border-radius:18px;
 width:90%;
 max-width:340px;
 text-align:center;
-border:1px solid #333;
+border:1px solid #222;
+box-shadow:0 0 40px rgba(255,0,0,.15);
+animation:fadeIn .8s ease;
 }
 
 .login-box h1{
-font-family:Creepster;
+font-family:'Creepster';
 color:var(--red);
 font-size:42px;
 margin-bottom:20px;
+text-shadow:0 0 20px red;
 }
 
 input{
@@ -60,9 +70,9 @@ width:100%;
 padding:14px;
 margin:10px 0;
 background:#000;
-border:1px solid #444;
+border:1px solid #333;
 color:white;
-border-radius:6px;
+border-radius:8px;
 }
 
 button{
@@ -72,11 +82,14 @@ background:var(--red);
 border:none;
 color:white;
 font-weight:600;
+border-radius:8px;
 cursor:pointer;
-border-radius:6px;
+transition:.3s;
 }
 
-/* PANEL */
+button:hover{background:#cc0000}
+
+/* ================= DASHBOARD ================= */
 
 #dashboard{display:none;}
 
@@ -84,52 +97,80 @@ border-radius:6px;
 width:260px;
 height:100vh;
 background:#000;
-border-right:1px solid #222;
+border-right:1px solid #1a1a1a;
 position:fixed;
 padding:30px 20px;
 }
 
 .logo-side{
-font-family:Creepster;
-color:var(--red);
+font-family:'Creepster';
 font-size:32px;
+color:var(--red);
 text-align:center;
-margin-bottom:40px;
+margin-bottom:50px;
+text-shadow:0 0 15px red;
+cursor:pointer;
 }
 
 .menu-btn{
 font-family:'Bebas Neue';
 font-size:26px;
-padding:16px;
+padding:14px;
+margin-bottom:12px;
 text-align:center;
 color:#777;
 cursor:pointer;
-margin-bottom:15px;
-border-radius:6px;
+border-radius:8px;
 transition:.3s;
 }
 
-.menu-btn.active{
+.menu-btn:hover{
+background:#111;
 color:white;
+}
+
+.menu-btn.active{
 background:rgba(255,0,0,.15);
 border-left:4px solid var(--red);
+color:white;
 }
 
-.main{
+.main-content{
 margin-left:260px;
-padding:40px;
+padding:50px;
+animation:fadeIn .7s ease;
 }
 
-.section{display:none;}
-.section.active{display:block;}
+/* ================= SECTIONS ================= */
+
+.section{
+display:none;
+opacity:0;
+transform:translateY(20px);
+transition:.4s;
+}
+
+.section.active{
+display:block;
+opacity:1;
+transform:translateY(0);
+}
+
+/* ================= CARDS ================= */
 
 .card{
-background:#0d0d0d;
-padding:25px;
-border-radius:12px;
+background:var(--card);
+padding:28px;
+border-radius:14px;
 border:1px solid #222;
-margin-bottom:20px;
-line-height:1.6;
+margin-bottom:25px;
+transition:.3s;
+box-shadow:0 0 20px rgba(255,0,0,.05);
+}
+
+.card:hover{
+transform:translateY(-5px);
+border:1px solid var(--red);
 }
 
 h2{
@@ -139,37 +180,65 @@ color:var(--red);
 margin-bottom:20px;
 }
 
-.logout{
-position:fixed;
-top:15px;
-right:15px;
-color:red;
-cursor:pointer;
-font-size:12px;
-font-weight:bold;
+h3{
+font-family:'Bebas Neue';
+margin-bottom:10px;
 }
 
-/* MOBILE */
+.role-tag{
+color:var(--red);
+font-size:12px;
+letter-spacing:2px;
+margin-bottom:5px;
+display:block;
+}
+
+ul{list-style:none;margin-top:10px}
+li{margin-bottom:8px;color:#bbb}
+
+/* ================= MOBILE ================= */
 
 @media(max-width:768px){
 
 .sidebar{
+position:relative;
 width:100%;
 height:auto;
-position:relative;
-border-right:none;
+display:flex;
+justify-content:space-around;
+padding:15px;
+border-bottom:1px solid #222;
 }
 
-.main{
-margin-left:0;
-padding:20px;
-}
+.logo-side{display:none;}
 
 .menu-btn{
-font-size:34px;
-padding:22px;
+font-size:24px;
+padding:12px 10px;
+flex:1;
 }
 
+.main-content{
+margin-left:0;
+padding:25px 18px;
+}
+
+}
+
+/* ================= ANIM ================= */
+
+@keyframes fadeIn{
+from{opacity:0;transform:translateY(15px)}
+to{opacity:1;transform:translateY(0)}
+}
+
+.logout{
+position:fixed;
+top:15px;
+right:15px;
+color:var(--red);
+cursor:pointer;
+font-size:12px;
 }
 
 </style>
@@ -181,86 +250,50 @@ padding:22px;
 <div id="login-screen">
 <div class="login-box">
 <h1>BENÍTEZ</h1>
-
-<input id="user" placeholder="Usuario">
-<input id="pass" type="password" placeholder="Contraseña">
-
-<button onclick="login()">ENTRAR</button>
-<p id="error" style="color:red;font-size:12px;margin-top:10px;"></p>
-
+<input id="uIn" placeholder="Usuario">
+<input id="pIn" type="password" placeholder="Contraseña">
+<button onclick="accessNow()">ENTRAR</button>
+<p id="err" style="color:red;font-size:12px"></p>
 </div>
 </div>
 
 <!-- DASHBOARD -->
 <div id="dashboard">
 
-<div class="logout" onclick="logout()">CERRAR SESIÓN</div>
+<div class="logout" onclick="exitNow()">Cerrar sesión</div>
 
 <div class="sidebar">
-<div class="logo-side">BENÍTEZ</div>
-
-<div class="menu-btn active" onclick="openTab('identidad',this)">IDENTIDAD</div>
-<div class="menu-btn" onclick="openTab('equipo',this)">EQUIPO</div>
-<div class="menu-btn" onclick="openTab('canciones',this)">CANCIONES</div>
-
+<div class="logo-side" onclick="tab('identidad')">BENÍTEZ</div>
+<div class="menu-btn active" id="m-id" onclick="tab('identidad')">Identidad</div>
+<div class="menu-btn" id="m-eq" onclick="tab('equipo')">Equipo</div>
+<div class="menu-btn" id="m-ca" onclick="tab('canciones')">Canciones</div>
 </div>
 
-<div class="main">
+<div class="main-content">
 
-<!-- IDENTIDAD -->
 <div id="identidad" class="section active">
 <h2>Identidad</h2>
-
 <div class="card">
-<strong>“El man que les gusta a las mujeres, pero con calle real”</strong>
-<p style="color:#aaa;margin-top:10px;">
-No es un niño lindo sin fondo ni calle sin atractivo. Es el equilibrio perfecto.
-</p>
+“El man que les gusta a las mujeres, pero con calle real”
+</div>
 </div>
 
-</div>
-
-<!-- EQUIPO -->
 <div id="equipo" class="section">
 <h2>Equipo</h2>
-
-<div class="card">
-🧠 <strong>MAZO — Manager</strong><br>
-Moverse, aparecer y generar respeto en el mundo real.
+<div class="card"><span class="role-tag">MANAGER</span>Mazo</div>
+<div class="card"><span class="role-tag">MARKETING</span>Tomás</div>
+<div class="card"><span class="role-tag">CÁMARA</span>Sebastián</div>
 </div>
 
-<div class="card">
-📈 <strong>TOMÁS — Marketing</strong><br>
-Convierte todo en percepción y crecimiento.
-</div>
-
-<div class="card">
-🎥 <strong>SEBASTIÁN — Cámara</strong><br>
-Nada importante se pierde sin grabarse.
-</div>
-
-<div class="card">
-⚙ Staff Apoyo:<br>
-Andrés Parra — DJ<br>
-Yerson / Angelo — Logística
-</div>
-
-</div>
-
-<!-- CANCIONES Y CONTENIDO -->
 <div id="canciones" class="section">
 <h2>Canciones</h2>
-
 <div class="card" style="text-align:center">
-
 <a href="https://drive.google.com/drive/folders/1vCpXlgufFSmUJyJj7qVpS10hlOPE5GhJ?usp=drive_link"
 target="_blank"
-style="background:red;padding:15px 30px;color:white;text-decoration:none;font-weight:bold;border-radius:6px;">
+style="background:red;padding:15px 30px;border-radius:8px;color:white;text-decoration:none;font-weight:600;">
 ABRIR DRIVE
 </a>
-
 </div>
-
 </div>
 
 </div>
@@ -268,52 +301,38 @@ ABRIR DRIVE
 
 <script>
 
-/* LOGIN SIMPLE (TODOS VEN LO MISMO) */
-
-const USER="equipo";
-const PASS="benitez2026";
-
-function login(){
-
-let u=document.getElementById("user").value;
-let p=document.getElementById("pass").value;
-
-if(u===USER && p===PASS){
-
-localStorage.setItem("bnzAccess","ok");
-loadPanel();
-
+function accessNow(){
+if(
+document.getElementById("uIn").value==="equipo" &&
+document.getElementById("pIn").value==="benitez2026"
+){
+localStorage.setItem("bnz","ok");
+load();
 }else{
-document.getElementById("error").innerText="Acceso incorrecto";
+document.getElementById("err").innerText="Acceso denegado";
 }
 }
 
-function loadPanel(){
-if(localStorage.getItem("bnzAccess")==="ok"){
+function exitNow(){
+localStorage.removeItem("bnz");
+location.reload();
+}
+
+function load(){
+if(localStorage.getItem("bnz")==="ok"){
 document.getElementById("login-screen").style.display="none";
 document.getElementById("dashboard").style.display="block";
 }
 }
 
-function logout(){
-localStorage.removeItem("bnzAccess");
-location.reload();
-}
-
-function openTab(id,btn){
-
-document.querySelectorAll(".section")
-.forEach(s=>s.classList.remove("active"));
-
+function tab(id){
+document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));
+document.querySelectorAll(".menu-btn").forEach(b=>b.classList.remove("active"));
 document.getElementById(id).classList.add("active");
-
-document.querySelectorAll(".menu-btn")
-.forEach(b=>b.classList.remove("active"));
-
-btn.classList.add("active");
+document.getElementById("m-"+id.substring(0,2)).classList.add("active");
 }
 
-window.onload=loadPanel;
+window.onload=load;
 
 </script>
 

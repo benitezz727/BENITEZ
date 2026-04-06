@@ -3,274 +3,47 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BENITEZ | Staff Portal</title>
-
+<title>BENITEZ</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Creepster&family=Bebas+Neue&display=swap" rel="stylesheet">
-
 <style>
-/* RESET & SMOOTH SCROLL */
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins', sans-serif;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body{
-    background: radial-gradient(circle at top, #1a0000, #000 70%); /* Un poco más de profundidad */
-    color: white;
-    min-height: 100vh;
-    overflow-x: hidden;
-}
-
-/* BARRA DE DESPLAZAMIENTO PERSONALIZADA */
-::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: #000; }
-::-webkit-scrollbar-thumb { background: #ff0000; border-radius: 10px; }
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{background:radial-gradient(circle at top,#1a0000,#000 60%);color:white;min-height:100vh;}
 
 /* TITULOS */
-h1 { font-family: 'Creepster', cursive; }
-h2, h3 { font-family: 'Bebas Neue', sans-serif; letter-spacing: 2px; }
-
-h2 {
-    font-size: 2.5rem;
-    margin-bottom: 30px;
-    border-bottom: 2px solid #ff0000;
-    display: inline-block;
-    padding-bottom: 5px;
-}
+h1{font-family:'Creepster';color:#ff0000;text-shadow:0 0 15px red;}
+h2,h3{font-family:'Bebas Neue';letter-spacing:2px;}
 
 /* LOGIN */
-.login-container{
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+.login-container{height:100vh;display:flex;justify-content:center;align-items:center;}
+.login-box{background:#0a0a0a;padding:40px;border-radius:20px;width:320px;text-align:center;border:1px solid #222;}
+input,button{width:100%;padding:12px;margin:10px 0;border-radius:8px;border:none;}
+input{background:#000;border:1px solid #222;color:white;}
+button{background:#ff0000;color:white;font-weight:600;cursor:pointer;}
 
-.login-box{
-    background: rgba(10, 10, 10, 0.9);
-    padding: 40px;
-    border-radius: 20px;
-    width: 350px;
-    text-align: center;
-    border: 1px solid #222;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    backdrop-filter: blur(10px);
-}
+/* ESTRUCTURA */
+.dashboard{display:none;}
+.container{display:flex;}
+.sidebar{width:240px;background:#000;border-right:1px solid #111;height:100vh;padding:30px 20px;position:fixed;}
+.menu a{display:block;font-size:24px;font-family:'Bebas Neue';margin:20px 0;color:#888;cursor:pointer;text-align:center;transition:.3s;}
+.menu a:hover, .menu a.active{color:#ff0000;}
+.main{margin-left:240px;padding:40px;width:100%;}
+.section{display:none; animation: fadeIn .5s;}
+.section.active{display:block;}
+@keyframes fadeIn {from{opacity:0;} to{opacity:1;}}
 
-.login-box h1{
-    color: #ff0000;
-    font-size: 42px;
-    text-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
-    margin-bottom: 30px;
-}
+/* IDENTIDAD & EQUIPO */
+.card{background:#0a0a0a;padding:25px;border-radius:15px;border:1px solid #111;margin-bottom:20px;}
+.team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;}
+.member{background:#0a0a0a;padding:25px;border-radius:15px;border:1px solid #111;text-align:center;position:relative;overflow:hidden;transition:.3s;}
+.member:hover{border-color:#ff0000;}
+.role{color:#ff0000;font-size:14px;text-transform:uppercase;}
+.functions{display:none;font-size:12px;margin-top:15px;color:#ccc;text-align:left;border-top:1px solid #222;padding-top:10px;}
+.member:hover .functions{display:block;}
 
-input{
-    width: 100%;
-    padding: 14px;
-    margin: 10px 0;
-    background: #050505;
-    border: 1px solid #333;
-    color: white;
-    border-radius: 8px;
-    outline: none;
-    transition: 0.3s;
-}
+.drive-btn{display:inline-block;margin-top:20px;padding:15px 30px;background:#ff0000;color:white;text-decoration:none;border-radius:8px;font-weight:600;}
+.logout{position:fixed;top:20px;right:25px;color:#ff0000;cursor:pointer;font-weight:600;z-index:10;}
 
-input:focus {
-    border-color: #ff0000;
-    box-shadow: 0 0 10px rgba(255, 0, 0, 0.2);
-}
-
-button{
-    width: 100%;
-    padding: 14px;
-    margin-top: 15px;
-    background: #ff0000;
-    border: none;
-    color: white;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: 0.3s;
-}
-
-button:hover {
-    background: #cc0000;
-    transform: translateY(-2px);
-}
-
-/* DASHBOARD */
-.dashboard{ display: none; animation: fadeIn 0.5s ease; }
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-.container{ display: flex; }
-
-/* SIDEBAR */
-.sidebar{
-    width: 260px;
-    background: #000;
-    border-right: 1px solid #111;
-    height: 100vh;
-    padding: 40px 20px;
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-}
-
-.logo{
-    color: #ff0000;
-    font-size: 38px;
-    font-family: 'Creepster';
-    margin-bottom: 60px;
-    cursor: pointer;
-    text-align: center;
-    text-shadow: 0 0 10px rgba(255, 0, 0, 0.4);
-}
-
-/* MENU */
-.menu a{
-    display: block;
-    font-size: 20px;
-    font-family: 'Bebas Neue';
-    letter-spacing: 1px;
-    margin: 15px 0;
-    padding: 10px;
-    color: #888;
-    cursor: pointer;
-    transition: 0.3s;
-    text-align: center;
-    border-radius: 5px;
-    text-decoration: none;
-}
-
-.menu a:hover, .menu a.active-link {
-    color: #fff;
-    background: rgba(255, 0, 0, 0.1);
-    border-left: 4px solid #ff0000;
-}
-
-/* MAIN */
-.main{
-    margin-left: 260px;
-    padding: 60px;
-    width: 100%;
-}
-
-.section{ display: none; }
-.section.active{ display: block; }
-
-/* TEAM GRID */
-.team-grid{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 25px;
-}
-
-.member{
-    background: linear-gradient(145deg, #0d0d0d, #050505);
-    padding: 35px 25px;
-    border-radius: 15px;
-    border: 1px solid #1a1a1a;
-    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    text-align: center;
-}
-
-.member:hover{
-    border: 1px solid #ff0000;
-    transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(255, 0, 0, 0.1);
-}
-
-.member h3 { font-size: 1.5rem; color: #fff; }
-
-.role{
-    color: #ff0000;
-    margin-top: 8px;
-    font-weight: 300;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-/* SONGS */
-.songs-box{
-    background: #0a0a0a;
-    padding: 60px;
-    border-radius: 20px;
-    border: 1px solid #111;
-    text-align: center;
-    max-width: 700px;
-    margin: 0 auto;
-}
-
-.drive-btn{
-    display: inline-block;
-    margin-top: 30px;
-    padding: 20px 45px;
-    background: #ff0000;
-    color: white;
-    text-decoration: none;
-    border-radius: 50px; /* Estilo píldora más moderno */
-    font-size: 18px;
-    font-weight: 600;
-    transition: 0.3s;
-    box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);
-}
-
-.drive-btn:hover{
-    background: #fff;
-    color: #000;
-    transform: scale(1.05);
-}
-
-/* LOGOUT */
-.logout{
-    position: fixed;
-    top: 25px;
-    right: 40px;
-    color: #ff0000;
-    font-weight: 600;
-    cursor: pointer;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    padding: 8px 15px;
-    border: 1px solid #ff0000;
-    border-radius: 5px;
-    transition: 0.3s;
-    z-index: 1000;
-}
-
-.logout:hover {
-    background: #ff0000;
-    color: white;
-}
-
-/* MOBILE */
-@media(max-width:768px){
-    .sidebar {
-        width: 100%;
-        height: auto;
-        position: relative;
-        padding: 20px;
-    }
-    .main { margin-left: 0; padding: 30px; }
-    .logout { top: 10px; right: 10px; font-size: 0.7rem; }
-    .menu { display: flex; justify-content: center; gap: 10px; }
-    .menu a { font-size: 16px; margin: 5px 0; }
-}
+@media(max-width:768px){.sidebar{width:100%;height:auto;position:relative;border-right:none;border-bottom:1px solid #111;}.main{margin-left:0;}}
 </style>
 </head>
 <body>
@@ -278,104 +51,49 @@ button:hover {
 <div id="login" class="login-container">
     <div class="login-box">
         <h1>BENITEZ</h1>
-        <input id="user" placeholder="Usuario" autocomplete="off">
+        <input id="user" placeholder="Usuario">
         <input id="pass" type="password" placeholder="Contraseña">
         <button id="loginBtn">Entrar</button>
-        <p id="error" style="color:red;margin-top:15px;font-size: 0.9rem;"></p>
+        <p id="error" style="color:red;margin-top:10px;"></p>
     </div>
 </div>
 
 <div id="dashboard" class="dashboard">
     <div class="logout" id="logoutBtn">Cerrar sesión</div>
-    
     <div class="container">
         <div class="sidebar">
-            <div class="logo" id="logoBtn">BENITEZ</div>
+            <div class="logo" style="font-family:'Creepster';font-size:30px;color:#ff0000;text-align:center;margin-bottom:30px;">BENITEZ</div>
             <div class="menu">
-                <a data-section="team" class="active-link">Equipo</a>
+                <a data-section="home" class="active">Inicio</a>
+                <a data-section="team">Equipo</a>
                 <a data-section="songs">Canciones</a>
             </div>
         </div>
 
         <div class="main">
-            <div id="team" class="section active">
-                <h2>Equipo de Trabajo</h2>
+            <div id="home" class="section active">
+                <h2>Identidad Artística</h2>
+                <div class="card">
+                    <p style="color:#ff0000; font-weight:600;">Vibe: Trap Romántico + Calle</p><br>
+                    <p>• <b>Mensaje:</b> Diferenciación por lujo, relaciones y estética under.</p>
+                    <p>• <b>Imagen:</b> Oscura, elegante y con actitud.</p>
+                </div>
+            </div>
+
+            <div id="team" class="section">
+                <h2 style="margin-bottom:20px;">Staff BENITEZ</h2>
                 <div class="team-grid">
-                    <div class="member"><h3>Pablo Mazo</h3><p class="role">Manager</p></div>
-                    <div class="member"><h3>Andres Parra</h3><p class="role">Co-Manager y Dj</p></div>
-                    <div class="member"><h3>Tomas Gallego</h3><p class="role">Marketing</p></div>
-                    <div class="member"><h3>Sebastian Muñoz</h3><p class="role">Camarógrafo</p></div>
-                    <div class="member"><h3>Yerson</h3><p class="role">Director Logístico</p></div>
-                    <div class="member"><h3>Angelo Tamayo</h3><p class="role">Asistente Personal</p></div>
+                    <div class="member"><h3>Pablo Mazo</h3><p class="role">Manager</p><div class="functions">• Estrategia de carrera<br>• Contratos<br>• Relaciones Públicas</div></div>
+                    <div class="member"><h3>Andres Parra</h3><p class="role">Co-Manager y Dj</p><div class="functions">• DJ Set en vivo<br>• Gestión de Agenda<br>• Curaduría Musical</div></div>
+                    <div class="member"><h3>Tomas Gallego</h3><p class="role">Marketing</p><div class="functions">• Pautas y Redes<br>• Crecimiento Audiencia<br>• Tendencias</div></div>
+                    <div class="member"><h3>Sebastian Muñoz</h3><p class="role">Camarógrafo</p><div class="functions">• Reels y Videos<br>• Cobertura de Eventos<br>• Edición</div></div>
+                    <div class="member"><h3>Yerson</h3><p class="role">Dir. Logístico</p><div class="functions">• Coordinación Eventos<br>• Transporte y Técnica<br>• Seguridad</div></div>
+                    <div class="member"><h3>Angelo Tamayo</h3><p class="role">Asistente</p><div class="functions">• Asistencia Directa<br>• Gestión de Tiempo<br>• Backstage</div></div>
                 </div>
             </div>
 
             <div id="songs" class="section">
-                <h2>Repositorio Privado</h2>
-                <div class="songs-box">
-                    <p style="color: #888; font-size: 1.1rem; line-height: 1.6;">
-                        Bienvenido al área de recursos. Aquí podrás acceder a las pistas, maquetas y versiones finales del proyecto <strong>BENITEZ</strong>.
-                    </p>
-                    <a class="drive-btn" 
-                       href="https://drive.google.com/drive/folders/1vCpXlgufFSmUJyJj7qVpS10hlOPE5GhJ?usp=drive_link" 
-                       target="_blank">
-                       ACCEDER AL DRIVE
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script>
-document.addEventListener("DOMContentLoaded", function(){
-    const USER="equipo";
-    const PASS="benitez2026";
-
-    const login=document.getElementById("login");
-    const dashboard=document.getElementById("dashboard");
-    const userInp = document.getElementById("user");
-    const passInp = document.getElementById("pass");
-    const error = document.getElementById("error");
-
-    document.getElementById("loginBtn").onclick = function(){
-        if(userInp.value === USER && passInp.value === PASS){
-            login.style.display="none";
-            dashboard.style.display="block";
-            localStorage.setItem("auth","true");
-        } else {
-            error.innerText="Credenciales inválidas";
-        }
-    };
-
-    if(localStorage.getItem("auth") === "true"){
-        login.style.display="none";
-        dashboard.style.display="block";
-    }
-
-    document.getElementById("logoutBtn").onclick = function(){
-        localStorage.removeItem("auth");
-        location.reload();
-    };
-
-    const menuLinks = document.querySelectorAll(".menu a");
-    menuLinks.forEach(btn => {
-        btn.onclick = function(){
-            // UI Update
-            menuLinks.forEach(l => l.classList.remove("active-link"));
-            btn.classList.add("active-link");
-            
-            // Section Update
-            document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
-            document.getElementById(btn.dataset.section).classList.add("active");
-        };
-    });
-
-    document.getElementById("logoBtn").onclick = function(){
-        location.reload();
-    };
-});
-</script>
-
-</body>
-</html>
+                <h2>Repositorio</h2>
+                <div class="card" style="text-align:center;">
+                    <p>Acceso privado al Drive del proyecto.</p>
+                    <a class="drive-btn" href="

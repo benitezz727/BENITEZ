@@ -3,187 +3,156 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BENÍTEZ | Staff Pro</title>
 
-<title>BENITEZ</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Creepster&family=Bebas+Neue&display=swap" rel="stylesheet">
 
 <style>
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
+:root{
+--red:#ff0000;
+--dark:#0a0a0a;
 }
 
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins;}
+
 body{
-background:#0a0a0a;
+background:#000;
 color:white;
-overflow-x:hidden;
 }
 
 /* LOGIN */
 
-#login{
-height:100vh;
+#login-screen{
+position:fixed;
+width:100%;
+height:100%;
+background:#000;
 display:flex;
 justify-content:center;
 align-items:center;
-background:black;
+z-index:9999;
 }
 
 .login-box{
 background:#111;
 padding:40px;
-border-radius:12px;
+border-radius:15px;
 width:320px;
 text-align:center;
-box-shadow:0 0 25px rgba(255,0,0,0.3);
+border:1px solid #333;
 }
 
-.login-box h2{
-color:#ff0000;
+.login-box h1{
+font-family:Creepster;
+color:var(--red);
+font-size:42px;
 margin-bottom:20px;
-letter-spacing:3px;
 }
 
 input{
 width:100%;
-padding:12px;
+padding:14px;
 margin:10px 0;
-border:none;
-background:#1c1c1c;
+background:#000;
+border:1px solid #444;
 color:white;
-border-radius:6px;
 }
 
 button{
 width:100%;
-padding:12px;
+padding:14px;
+background:var(--red);
 border:none;
-background:#ff0000;
-color:white;
-font-weight:bold;
-border-radius:6px;
-cursor:pointer;
-transition:.3s;
-}
-
-button:hover{
-background:#cc0000;
-}
-
-/* APP */
-
-#app{
-display:none;
-}
-
-/* HEADER */
-
-header{
-position:fixed;
-top:0;
-width:100%;
-background:#000;
-padding:18px;
-text-align:center;
-font-size:28px;
-font-weight:700;
-letter-spacing:5px;
-cursor:pointer;
-border-bottom:1px solid #1a1a1a;
-z-index:1000;
-}
-
-header:hover{
-color:#ff0000;
-}
-
-/* CONTENT */
-
-.container{
-padding-top:100px;
-width:90%;
-max-width:900px;
-margin:auto;
-}
-
-/* CARDS */
-
-.section{
-background:#111;
-margin:40px 0;
-padding:50px 30px;
-border-radius:14px;
-text-align:center;
-transition:.3s;
-box-shadow:0 0 20px rgba(255,0,0,0.15);
-}
-
-.section:hover{
-transform:translateY(-5px);
-box-shadow:0 0 35px rgba(255,0,0,0.35);
-}
-
-.section h2{
-color:#ff0000;
-margin-bottom:30px;
-font-size:28px;
-letter-spacing:2px;
-}
-
-/* TEAM */
-
-.member{
-margin:14px 0;
-font-size:18px;
-opacity:.9;
-}
-
-/* BUTTON LINK */
-
-.link-btn{
-display:inline-block;
-margin-top:20px;
-padding:16px 28px;
-background:#ff0000;
-border-radius:8px;
-text-decoration:none;
 color:white;
 font-weight:600;
-font-size:18px;
-transition:.3s;
+cursor:pointer;
 }
 
-.link-btn:hover{
-background:#cc0000;
-transform:scale(1.05);
+/* DASHBOARD */
+
+#dashboard{display:none;}
+
+.sidebar{
+width:260px;
+height:100vh;
+background:#000;
+border-right:1px solid #222;
+position:fixed;
+padding:30px 20px;
 }
 
-/* MOBILE PRO */
+.logo-side{
+font-family:Creepster;
+color:var(--red);
+font-size:32px;
+text-align:center;
+margin-bottom:40px;
+}
+
+.menu-btn{
+font-family:'Bebas Neue';
+font-size:26px;
+padding:15px;
+text-align:center;
+color:#777;
+cursor:pointer;
+margin-bottom:12px;
+border-radius:6px;
+}
+
+.menu-btn.active{
+color:white;
+background:rgba(255,0,0,.15);
+border-left:4px solid var(--red);
+}
+
+.main{
+margin-left:260px;
+padding:40px;
+}
+
+.section{display:none;}
+.section.active{display:block;}
+
+.card{
+background:#0d0d0d;
+padding:25px;
+border-radius:12px;
+border:1px solid #222;
+margin-bottom:20px;
+}
+
+h2{
+font-family:'Bebas Neue';
+font-size:3rem;
+color:var(--red);
+margin-bottom:20px;
+}
+
+.logout{
+position:fixed;
+top:15px;
+right:15px;
+color:red;
+cursor:pointer;
+font-size:12px;
+}
 
 @media(max-width:768px){
-
-.section{
-padding:60px 20px;
-}
-
-.section h2{
-font-size:32px;
-}
-
-.member{
-font-size:20px;
-}
-
-.link-btn{
+.sidebar{
 width:100%;
-font-size:20px;
-padding:18px;
+height:auto;
+position:relative;
 }
-
+.main{
+margin-left:0;
+padding:20px;
+}
+.menu-btn{
+font-size:32px;
+padding:20px;
+}
 }
 
 </style>
@@ -192,88 +161,153 @@ padding:18px;
 <body>
 
 <!-- LOGIN -->
-<div id="login">
+<div id="login-screen">
 <div class="login-box">
-<h2>BENITEZ</h2>
+<h1>BENÍTEZ</h1>
 
 <input id="user" placeholder="Usuario">
 <input id="pass" type="password" placeholder="Contraseña">
 
-<button onclick="login()">Entrar</button>
+<button onclick="login()">ENTRAR</button>
+<p id="error" style="color:red;font-size:12px"></p>
 
 </div>
 </div>
 
+<!-- PANEL -->
+<div id="dashboard">
 
-<!-- APP -->
-<div id="app">
+<div class="logout" onclick="logout()">CERRAR SESIÓN</div>
 
-<header onclick="scrollTopPage()">BENITEZ</header>
+<div class="sidebar">
+<div class="logo-side">BENÍTEZ</div>
 
-<div class="container">
+<div id="menu"></div>
+
+</div>
+
+<div class="main">
+
+<!-- IDENTIDAD -->
+<div id="identidad" class="section">
+<h2>Identidad</h2>
+<div class="card">
+“El man que les gusta a las mujeres, pero con calle real”
+</div>
+</div>
 
 <!-- EQUIPO -->
-<div class="section" id="equipo">
-<h2>EQUIPO</h2>
-
-<div class="member">Pablo Mazo — Manager</div>
-<div class="member">Tomas Gallego — Marketing</div>
-<div class="member">Sebastian Muñoz — Camarógrafo</div>
-<div class="member">Yerson — Director Logístico</div>
-<div class="member">Angelo Tamayo — Asistente Personal</div>
-
+<div id="equipo" class="section">
+<h2>Equipo</h2>
+<div class="card">Panel interno del staff.</div>
 </div>
 
 <!-- CANCIONES -->
-<div class="section" id="canciones">
-<h2>CANCIONES</h2>
-
-<p>Acceso privado al catálogo musical del artista.</p>
-
-<a class="link-btn"
-href="https://drive.google.com/drive/folders/1vCpXlgufFSmUJyJj7qVpS10hlOPE5GhJ?usp=drive_link"
-target="_blank">
-
-ENTRAR AL DRIVE
-
+<div id="canciones" class="section">
+<h2>Canciones</h2>
+<div class="card" style="text-align:center">
+<a href="https://drive.google.com/drive/folders/1vCpXlgufFSmUJyJj7qVpS10hlOPE5GhJ?usp=drive_link"
+target="_blank"
+style="background:red;padding:15px 30px;color:white;text-decoration:none;font-weight:bold;border-radius:6px;">
+ABRIR DRIVE
 </a>
-
-</div>
-
 </div>
 </div>
 
+</div>
+</div>
 
 <script>
 
-/* LOGIN SIMPLE */
+/* ===== USUARIOS PRO ===== */
+
+const USERS={
+equipo:{pass:"benitez2026",role:"admin"},
+mazo:{pass:"manager",role:"manager"},
+tomas:{pass:"marketing",role:"marketing"},
+sebastian:{pass:"camara",role:"camara"}
+};
+
+/* ===== PERMISOS ===== */
+
+const PERMISSIONS={
+admin:["identidad","equipo","canciones"],
+manager:["identidad","equipo","canciones"],
+marketing:["identidad","canciones"],
+camara:["canciones"]
+};
+
+/* LOGIN */
 
 function login(){
 
-const usuario="benitez";
-const contraseña="1234";
-
-const u=document.getElementById("user").value;
+const u=document.getElementById("user").value.toLowerCase();
 const p=document.getElementById("pass").value;
 
-if(u===usuario && p===contraseña){
+if(USERS[u] && USERS[u].pass===p){
 
-document.getElementById("login").style.display="none";
-document.getElementById("app").style.display="block";
+localStorage.setItem("bnzUser",u);
+loadDashboard();
 
 }else{
-alert("Datos incorrectos");
+document.getElementById("error").innerText="Acceso incorrecto";
 }
 }
 
-/* VOLVER ARRIBA */
+/* LOAD */
 
-function scrollTopPage(){
-window.scrollTo({
-top:0,
-behavior:"smooth"
+function loadDashboard(){
+
+const user=localStorage.getItem("bnzUser");
+if(!user)return;
+
+document.getElementById("login-screen").style.display="none";
+document.getElementById("dashboard").style.display="block";
+
+buildMenu(USERS[user].role);
+}
+
+/* MENU DINÁMICO */
+
+function buildMenu(role){
+
+const menu=document.getElementById("menu");
+menu.innerHTML="";
+
+PERMISSIONS[role].forEach(sec=>{
+
+const btn=document.createElement("div");
+btn.className="menu-btn";
+btn.innerText=sec.toUpperCase();
+
+btn.onclick=()=>openTab(sec);
+
+menu.appendChild(btn);
+
 });
+
+openTab(PERMISSIONS[role][0]);
 }
+
+function openTab(id){
+
+document.querySelectorAll(".section")
+.forEach(s=>s.classList.remove("active"));
+
+document.getElementById(id).classList.add("active");
+
+document.querySelectorAll(".menu-btn")
+.forEach(b=>b.classList.remove("active"));
+
+event.target.classList.add("active");
+}
+
+function logout(){
+localStorage.removeItem("bnzUser");
+location.reload();
+}
+
+window.onload=loadDashboard;
 
 </script>
 

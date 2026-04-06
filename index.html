@@ -1,158 +1,189 @@
-🔥 IDENTIDAD DE BENÍTEZ (CLARA Y USABLE)
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BENÍTEZ | Staff Portal</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Creepster&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+    :root { --red: #ff0000; --dark: #0a0a0a; }
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+    body{background:radial-gradient(circle at top,#1a0000,#000 70%);color:white;min-height:100vh;}
 
-🎯 CONCEPTO BASE
+    /* LOGIN */
+    .login-container{height:100vh;display:flex;justify-content:center;align-items:center;padding:20px;}
+    .login-box{background:rgba(10,10,10,0.9);padding:40px;border-radius:20px;width:100%;max-width:350px;text-align:center;border:1px solid #222;backdrop-filter:blur(10px);}
+    .login-box h1{font-family:'Creepster';color:var(--red);font-size:45px;margin-bottom:25px;text-shadow:0 0 20px rgba(255,0,0,0.5);}
+    input,button{width:100%;padding:14px;margin:10px 0;border-radius:8px;border:none;outline:none;}
+    input{background:#000;border:1px solid #333;color:white;}
+    button{background:var(--red);color:white;font-weight:600;cursor:pointer;text-transform:uppercase;}
 
-👉 “El man que les gusta a las mujeres, pero con calle real”
+    /* LAYOUT */
+    .dashboard{display:none;}
+    .container{display:flex;}
+    .sidebar{width:260px;background:#000;border-right:1px solid #111;height:100vh;padding:40px 20px;position:fixed;z-index:100;}
+    .logo-side{font-family:'Creepster';color:var(--red);font-size:32px;text-align:center;margin-bottom:40px;}
+    
+    .menu a{display:block;font-family:'Bebas Neue';font-size:24px;padding:12px;color:#666;cursor:pointer;transition:0.3s;text-decoration:none;text-align:center;margin-bottom:10px;}
+    .menu a:hover, .menu a.active{color:white;background:rgba(255,0,0,0.1);border-left:4px solid var(--red);}
+    
+    .main{margin-left:260px;padding:50px;width:100%;}
+    .section{display:none; animation: fadeIn 0.5s ease forwards;}
+    .section.active{display:block;}
 
-No es:
-❌ niño lindo sin fondo
-❌ calle sin atractivo
+    @keyframes fadeIn { from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:translateY(0);} }
 
-✔ Es mezcla:
-	•	atractivo
-	•	actitud
-	•	malicia
-	•	sentimiento
+    /* CONTENIDO */
+    h2{font-family:'Bebas Neue';font-size:3rem;margin-bottom:25px;border-bottom:2px solid var(--red);display:inline-block;}
+    h3{font-family:'Bebas Neue';color:var(--red);font-size:1.8rem;margin-top:15px;}
+    .card{background:var(--dark);padding:25px;border-radius:15px;border:1px solid #222;margin-bottom:20px;}
+    
+    /* EQUIPO */
+    .team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;}
+    .member{background:#050505;padding:25px;border-radius:12px;border:1px solid #111;transition:0.3s;}
+    .member:hover{border-color:var(--red);}
+    .role{color:var(--red);font-size:12px;font-weight:600;text-transform:uppercase;display:block;margin-bottom:10px;}
+    .func{font-size:13px;color:#888;line-height:1.4;}
 
-⸻
+    .drive-btn{display:inline-block;padding:15px 35px;background:var(--red);color:white;text-decoration:none;border-radius:50px;font-weight:600;margin-top:20px;}
+    .logout{position:fixed;top:20px;right:40px;color:var(--red);border:1px solid var(--red);padding:5px 15px;border-radius:5px;cursor:pointer;z-index:1000;font-size:12px;}
 
-💔 LADO MUJERES (EL FUERTE)
+    @media(max-width:768px){
+        .container{flex-direction:column;}
+        .sidebar{width:100%;height:auto;position:relative;}
+        .main{margin-left:0;padding:20px;}
+    }
+</style>
+</head>
+<body>
 
-👉 Aquí está el negocio
+<div id="logoutBtn" class="logout" style="display:none;">CERRAR SESIÓN</div>
 
-QUÉ DEBE TRANSMITIR
-	•	seguridad
-	•	misterio
-	•	deseo
-	•	un poco de peligro (sin exagerar)
+<div id="login" class="login-container">
+    <div class="login-box">
+        <h1>BENÍTEZ</h1>
+        <input id="userInp" placeholder="Usuario">
+        <input id="passInp" type="password" placeholder="Contraseña">
+        <button id="loginBtn">Entrar</button>
+        <p id="errorMsg" style="color:red;margin-top:10px;font-size:12px;"></p>
+    </div>
+</div>
 
-⸻
+<div id="dashboard" class="dashboard">
+    <div class="container">
+        <div class="sidebar">
+            <div class="logo-side">BENÍTEZ</div>
+            <div class="menu">
+                <a data-target="identidad" class="menu-link active">Identidad</a>
+                <a data-target="equipo" class="menu-link">Equipo</a>
+                <a data-target="canciones" class="menu-link">Canciones</a>
+            </div>
+        </div>
 
-LETRAS
-	•	infidelidad
-	•	tentación
-	•	relaciones reales
-	•	lo que ellas sienten pero no dicen
+        <div class="main">
+            <div id="identidad" class="section active">
+                <h2>Identidad</h2>
+                <div class="card">
+                    <p style="color:var(--red); font-weight:600; font-size:1.2rem;">“El man que les gusta a las mujeres, pero con calle real”</p>
+                    <p style="margin-top:10px; color:#ccc;">Mezcla: Atractivo, actitud, malicia y sentimiento.</p>
+                </div>
+                <div class="card">
+                    <h3>💔 Lado Mujeres</h3>
+                    <p>Transmitir seguridad, misterio y deseo. Que ellas digan: "Este man me entiende".</p>
+                    <h3>🖤 Lado Calle</h3>
+                    <p>Firme, serio y sin miedo. Estética oscura y elegante pero con flow real.</p>
+                </div>
+            </div>
 
-👉 Que una mujer diga:
-“este man me entiende” o “este man es un problema”
+            <div id="equipo" class="section">
+                <h2>Equipo</h2>
+                <div class="team-grid">
+                    <div class="member">
+                        <span class="role">Management</span>
+                        <h4>Mazo + Teto</h4>
+                        <p class="func">Estrategia, booking y expansión del proyecto.</p>
+                    </div>
+                    <div class="member">
+                        <span class="role">Co-Manager & DJ</span>
+                        <h4>Andres Parra</h4>
+                        <p class="func">Show en vivo y control de agenda operativa.</p>
+                    </div>
+                    <div class="member">
+                        <span class="role">Marketing</span>
+                        <h4>Tomás Gallego</h4>
+                        <p class="func">Imagen, redes y ADN visual de Benítez.</p>
+                    </div>
+                    <div class="member">
+                        <span class="role">Film & Foto</span>
+                        <h4>Sebastián Muñoz</h4>
+                        <p class="func">Capturar la actitud y esencia en cada video.</p>
+                    </div>
+                </div>
+            </div>
 
-⸻
+            <div id="canciones" class="section">
+                <h2>Canciones</h2>
+                <div class="card" style="text-align:center;">
+                    <p>Acceso exclusivo al material del proyecto.</p>
+                    <a href="https://drive.google.com/drive/folders/1vCpXlgufFSmUJyJj7qVpS10hlOPE5GhJ?usp=drive_link" target="_blank" class="drive-btn">ABRIR DRIVE</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-ACTITUD
-	•	no rogar
-	•	no mostrarse necesitado
-	•	no ser intenso
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+    const login = document.getElementById("login");
+    const dashboard = document.getElementById("dashboard");
+    const logoutBtn = document.getElementById("logoutBtn");
 
-👉 Siempre:
-tranquilo, seguro, en control
+    // Función para mostrar el panel
+    function showDashboard() {
+        login.style.display = "none";
+        dashboard.style.display = "block";
+        logoutBtn.style.display = "block";
+    }
 
-⸻
+    // Login
+    document.getElementById("loginBtn").onclick = function(){
+        const u = document.getElementById("userInp").value;
+        const p = document.getElementById("passInp").value;
+        if(u === "equipo" && p === "benitez2026"){
+            localStorage.setItem("benitez_auth", "true");
+            showDashboard();
+        } else {
+            document.getElementById("errorMsg").innerText = "Acceso Denegado";
+        }
+    };
 
-🖤 LADO CALLE (EL EQUILIBRIO)
+    // Persistencia
+    if(localStorage.getItem("benitez_auth") === "true") showDashboard();
 
-👉 Esto evita que se vea “muy pop” o débil
+    // Logout
+    logoutBtn.onclick = function(){
+        localStorage.removeItem("benitez_auth");
+        location.reload();
+    };
 
-ENERGÍA
-	•	firme
-	•	serio cuando toca
-	•	sin miedo
+    // Navegación (Corregida)
+    const links = document.querySelectorAll(".menu-link");
+    links.forEach(link => {
+        link.onclick = function(){
+            // Quitar clase activa de links
+            links.forEach(l => l.classList.remove("active"));
+            link.classList.add("active");
 
-⸻
+            // Ocultar todas las secciones
+            document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
+            
+            // Mostrar la sección destino
+            const targetId = link.getAttribute("data-target");
+            document.getElementById(targetId).classList.add("active");
+        };
+    });
+});
+</script>
 
-FORMA DE HABLAR
-	•	natural
-	•	sin forzar
-	•	con carácter
-
-⸻
-
-ESTÉTICA
-	•	oscuro
-	•	elegante pero calle
-	•	sencillo pero con flow
-
-⸻
-
-🎭 PERSONALIDAD COMPLETA
-
-👉 Mezcla final:
-	•	atractivo
-	•	reservado
-	•	confiado
-	•	emocional pero no débil
-
-⸻
-
-🔥 CÓMO SE VE ESTO EN CONTENIDO
-
-⸻
-
-🎥 VIDEOS
-	•	mirando a cámara (seguridad)
-	•	cantando como si se lo dijeras a alguien
-	•	actitud relajada pero dominante
-
-⸻
-
-FRASES / CAPTIONS
-	•	“aquí todos hemos sido culpables…”
-	•	“no era pa tanto, pero pasó”
-	•	“sabías lo que iba a pasar”
-
-👉 cosas que generen identificación
-
-⸻
-
-⚠️ ERRORES QUE NO PUEDES COMETER
-
-⸻
-
-❌ SER DEMASIADO TIERNO
-	•	te baja la percepción
-
-⸻
-
-❌ SER DEMASIADO DURO
-	•	pierdes el público femenino
-
-⸻
-
-❌ FORZAR PERSONAJE
-	•	la gente se da cuenta
-
-⸻
-
-🔗 CÓMO EL EQUIPO USA ESTA IDENTIDAD
-
-⸻
-
-TOMÁS
-
-👉 adapta TODO a esto
-	•	contenido
-	•	estética
-	•	mensajes
-
-⸻
-
-SEBASTIÁN
-
-👉 graba:
-	•	miradas
-	•	actitud
-	•	presencia
-
-⸻
-
-Sebastian tambien ayuda a
-
-👉 ayuda a:
-	•	que no te veas plano
-	•	que transmitas más
-
-⸻
-
-MAZO + TETO
-
-👉 buscan oportunidades que encajen con esa imagen
+</body>
+</html>

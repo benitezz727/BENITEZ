@@ -14,7 +14,7 @@
         #login-screen {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: #000; display: flex; justify-content: center; align-items: center;
-            z-index: 10000; /* Prioridad máxima */
+            z-index: 10000;
         }
         .login-box {
             background: #111; padding: 40px; border-radius: 15px;
@@ -25,16 +25,14 @@
             width: 100%; padding: 15px; margin: 10px 0; background: #000; 
             border: 1px solid #444; color: white; border-radius: 5px; font-size: 16px; outline: none;
         }
-        input:focus { border-color: var(--red); }
         button { 
             width: 100%; padding: 15px; background: var(--red); color: white; 
             border: none; border-radius: 5px; font-weight: 600; cursor: pointer; margin-top: 10px;
         }
 
-        /* DASHBOARD OCULTO POR DEFECTO */
+        /* DASHBOARD */
         #dashboard { display: none; }
         
-        /* DISEÑO DE PANEL */
         .sidebar {
             width: 260px; background: #000; border-right: 1px solid #222;
             height: 100vh; position: fixed; padding: 30px 20px;
@@ -50,11 +48,16 @@
         .section { display: none; }
         .section.active { display: block; }
 
-        /* TARJETAS DE IDENTIDAD */
-        .card { background: #0d0d0d; padding: 25px; border-radius: 12px; border: 1px solid #222; margin-bottom: 20px; }
+        /* TARJETAS */
+        .card { background: #0d0d0d; padding: 25px; border-radius: 12px; border: 1px solid #222; margin-bottom: 20px; line-height: 1.5; }
         h2 { font-family: 'Bebas Neue'; font-size: 3rem; color: var(--red); margin-bottom: 20px; }
         h3 { font-family: 'Bebas Neue'; margin: 15px 0; color: #fff; border-bottom: 1px solid var(--red); display: inline-block; padding-bottom: 5px; }
         .highlight { color: var(--red); font-weight: 600; }
+        .role-tag { font-size: 0.8rem; color: #ff0000; font-weight: bold; text-transform: uppercase; display: block; margin-bottom: 5px; }
+        
+        ul { list-style: none; margin-top: 10px; }
+        li { margin-bottom: 8px; position: relative; padding-left: 15px; font-size: 0.95rem; }
+        li::before { content: "•"; color: red; position: absolute; left: 0; }
 
         @media (max-width: 768px) {
             .sidebar { width: 100%; height: auto; position: relative; border-right: none; padding: 15px; }
@@ -94,27 +97,64 @@
                     <p style="margin-top:10px;">Atractivo, reservado, confiado y emocional pero no débil.</p>
                 </div>
                 <div class="card">
-                    <h3>💔 LADO MUJERES</h3>
-                    <p>Transmitir seguridad y deseo. Letras sobre relaciones reales e infidelidad.</p>
-                    <h3>🖤 LADO CALLE</h3>
-                    <p>Energía firme y seria. Estética oscura, elegante pero callejera.</p>
+                    <h3>🎭 MEZCLA FINAL</h3>
+                    <ul>
+                        <li>Atractivo + Actitud</li>
+                        <li>Malicia + Sentimiento</li>
+                        <li>Seguro y en control (No rogar)</li>
+                    </ul>
                 </div>
                 <div class="card">
-                    <h3 style="color: var(--red);">🔗 TRABAJO EN EQUIPO</h3>
-                    <p><strong>TOMÁS:</strong> Adapta contenido y estética al concepto.</p>
-                    <p><strong>SEBASTIÁN:</strong> Graba miradas y actitud potente.</p>
-                    <p><strong>MAZO+TETO:</strong> Buscan negocios que sumen a esta imagen.</p>
+                    <h3 style="color: var(--red);">🔗 CÓMO USA EL EQUIPO ESTA IDENTIDAD</h3>
+                    <p><strong>TOMÁS:</strong> Adapta TODO el contenido y estética a este concepto.</p>
+                    <p><strong>SEBASTIÁN:</strong> Graba miradas y actitud. No deja perder ni un momento de energía.</p>
+                    <p><strong>MAZO + TETO:</strong> Generan respeto y buscan negocios que sumen a esta imagen.</p>
                 </div>
             </div>
 
             <div id="equipo" class="section">
-                <h2>Staff Oficial</h2>
+                <h2>Roles Reales</h2>
+                
                 <div class="card">
-                    <p>• <strong>Mazo + Teto:</strong> Management</p>
-                    <p>• <strong>Andrés Parra:</strong> Co-Manager & DJ</p>
-                    <p>• <strong>Tomás Gallego:</strong> Marketing</p>
-                    <p>• <strong>Sebastián Muñoz:</strong> Film & Foto</p>
-                    <p>• <strong>Yerson / Angelo:</strong> Logística</p>
+                    <span class="role-tag">Manager — Mundo Real</span>
+                    <h3>🧠 MAZO</h3>
+                    <p>Olvídate de estar pegado al celular. Su trabajo es <strong>moverse, aparecer y generar respeto.</strong></p>
+                    <p class="highlight" style="margin-top:10px;">🎯 Qué tiene que hacer:</p>
+                    <ul>
+                        <li>Estar donde todo pasa: Estudios, Eventos, Rodajes.</li>
+                        <li>Parche donde haya gente del medio.</li>
+                        <li>Presencia constante: "Aunque no haya plata, hay que estar".</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <span class="role-tag">Marketing + Co-Manager</span>
+                    <h3>📈 TOMÁS</h3>
+                    <p>Este man es el que hace que <strong>todo se vea grande</strong> aunque aún no lo sea.</p>
+                    <p class="highlight" style="margin-top:10px;">🎯 Función Principal:</p>
+                    <ul>
+                        <li>Convierte lo que hacen en movimiento, percepción y crecimiento.</li>
+                        <li>Agarrar todo lo que pase y volverlo estrategia.</li>
+                        <li>Filtro y cerebro del contenido: Qué se graba, qué se sube, cómo se ve.</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <span class="role-tag">Cámara — Rol Real</span>
+                    <h3>🎥 SEBASTIÁN</h3>
+                    <p class="highlight">🎯 Función Principal:</p>
+                    <p><strong>No dejar perder ni un momento importante.</strong></p>
+                    <ul>
+                        <li>Si algo está pasando → se graba.</li>
+                        <li>Si hay energía o contacto → se graba.</li>
+                        <li>Si no se ve plano → se transmite más.</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>Resto del Staff</h3>
+                    <p>• <strong>Andrés Parra:</strong> Ejecución de shows y control operativo.</p>
+                    <p>• <strong>Yerson / Angelo:</strong> Logística y soporte de campo.</p>
                 </div>
             </div>
 
@@ -135,12 +175,9 @@
         function intentarEntrar() {
             const u = document.getElementById('userInput').value;
             const p = document.getElementById('passInput').value;
-
-            // Validación directa
             if (u === "equipo" && p === "benitez2026") {
                 document.getElementById('login-screen').style.display = 'none';
                 document.getElementById('dashboard').style.display = 'block';
-                // Intentamos guardar, pero si falla el login seguirá funcionando esta vez
                 try { localStorage.setItem('sesion_benitez', 'true'); } catch(e) {}
             } else {
                 document.getElementById('errorMsg').innerText = "Credenciales incorrectas";
@@ -153,20 +190,15 @@
         }
 
         function ver(seccionId) {
-            // Ocultar todas
             document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
             document.querySelectorAll('.menu-btn').forEach(b => b.classList.remove('active'));
-            
-            // Mostrar la correcta
             document.getElementById(seccionId).classList.add('active');
             
-            // Activar botón del menú (mapeo simple)
             if(seccionId === 'identidad') document.getElementById('btn-id').classList.add('active');
             if(seccionId === 'equipo') document.getElementById('btn-eq').classList.add('active');
             if(seccionId === 'canciones') document.getElementById('btn-ca').classList.add('active');
         }
 
-        // Revisar sesión al cargar
         window.onload = function() {
             try {
                 if (localStorage.getItem('sesion_benitez') === 'true') {

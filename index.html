@@ -5,11 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BENITEZ</title>
 
-<!-- FUENTES -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Creepster&family=Bebas+Neue&display=swap" rel="stylesheet">
 
 <style>
-
 /* RESET */
 *{
 margin:0;
@@ -28,7 +26,6 @@ h1{font-family:'Creepster',cursive;}
 h2,h3{font-family:'Bebas Neue',sans-serif;letter-spacing:2px;}
 
 /* LOGIN */
-
 .login-container{
 height:100vh;
 display:flex;
@@ -74,7 +71,6 @@ font-weight:600;
 }
 
 /* DASHBOARD */
-
 .dashboard{display:none;}
 
 .container{
@@ -82,7 +78,6 @@ display:flex;
 }
 
 /* SIDEBAR */
-
 .sidebar{
 width:260px;
 background:#000;
@@ -102,7 +97,6 @@ text-align:center;
 }
 
 /* MENU GRANDE */
-
 .menu a{
 display:block;
 font-size:26px;
@@ -119,7 +113,6 @@ transform:scale(1.05);
 }
 
 /* MAIN */
-
 .main{
 margin-left:260px;
 padding:40px;
@@ -130,7 +123,6 @@ width:100%;
 .section.active{display:block}
 
 /* TEAM */
-
 .team-grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
@@ -157,7 +149,6 @@ margin-top:6px;
 }
 
 /* CANCIONES */
-
 .songs-box{
 background:#0a0a0a;
 padding:40px;
@@ -185,19 +176,17 @@ box-shadow:0 0 18px rgba(255,0,0,.5);
 }
 
 /* LOGOUT */
-
 .logout{
 position:fixed;
 top:20px;
 right:25px;
 color:#ff0000;
 cursor:pointer;
+z-index: 100;
 }
 
 /* MOBILE */
-
 @media(max-width:768px){
-
 .sidebar{
 width:100%;
 height:auto;
@@ -219,135 +208,105 @@ padding:25px;
 .logo{
 font-size:42px;
 }
-
 }
-
 </style>
 </head>
 
 <body>
 
-<!-- LOGIN -->
 <div id="login" class="login-container">
-<div class="login-box">
-
-<h1>BENITEZ</h1>
-
-<input id="user" placeholder="Usuario">
-<input id="pass" type="password" placeholder="Contraseña">
-
-<button id="loginBtn">Entrar</button>
-<p id="error" style="color:red;margin-top:10px;"></p>
-
-</div>
+    <div class="login-box">
+        <h1>BENITEZ</h1>
+        <input id="user" placeholder="Usuario">
+        <input id="pass" type="password" placeholder="Contraseña">
+        <button id="loginBtn">Entrar</button>
+        <p id="error" style="color:red;margin-top:10px;"></p>
+    </div>
 </div>
 
-<!-- PANEL -->
 <div id="dashboard" class="dashboard">
+    <div class="logout" id="logoutBtn">Cerrar sesión</div>
+    <div class="container">
+        <div class="sidebar">
+            <div class="logo" id="logoBtn">BENITEZ</div>
+            <div class="menu">
+                <a data-section="team">Equipo</a>
+                <a data-section="songs">Canciones</a>
+            </div>
+        </div>
 
-<div class="logout" id="logoutBtn">Cerrar sesión</div>
+        <div class="main">
+            <div id="team" class="section active">
+                <h2>Equipo BENITEZ</h2>
+                <div class="team-grid">
+                    <div class="member"><h3>Pablo Mazo</h3><p class="role">Manager</p></div>
+                    <div class="member"><h3>Andres Parra</h3><p class="role">Co-Manager y Dj</p></div>
+                    <div class="member"><h3>Tomas Gallego</h3><p class="role">Marketing</p></div>
+                    <div class="member"><h3>Sebastian Muñoz</h3><p class="role">Camarógrafo</p></div>
+                    <div class="member"><h3>Yerson</h3><p class="role">Director Logístico</p></div>
+                    <div class="member"><h3>Angelo Tamayo</h3><p class="role">Asistente Personal</p></div>
+                </div>
+            </div>
 
-<div class="container">
-
-<!-- SIDEBAR -->
-<div class="sidebar">
-
-<div class="logo" id="logoBtn">BENITEZ</div>
-
-<div class="menu">
-<a data-section="team">Equipo</a>
-<a data-section="songs">Canciones</a>
-</div>
-
-</div>
-
-<!-- MAIN -->
-<div class="main">
-
-<!-- EQUIPO -->
-<div id="team" class="section active">
-
-<h2>Equipo BENITEZ</h2>
-
-<div class="team-grid">
-<div class="member"><h3>Pablo Mazo</h3><p class="role">Manager</p></div>
-<div class="member"><h3>Tomas Gallego</h3><p class="role">Marketing</p></div>
-<div class="member"><h3>Sebastian Muñoz</h3><p class="role">Camarógrafo</p></div>
-<div class="member"><h3>Yerson</h3><p class="role">Director Logístico</p></div>
-<div class="member"><h3>Angelo Tamayo</h3><p class="role">Asistente Personal</p></div>
-  <div class="member"><h3>Andres Parra</h3><p class="role">Co-Manager y Dj </p></div>
-</div>
-
-</div>
-
-<!-- CANCIONES -->
-<div id="songs" class="section">
-
-<h2>Repositorio de Canciones</h2>
-
-<div class="songs-box">
-
-<p>Acceso privado al Drive del proyecto BENITEZ.</p>
-
-<a class="drive-btn"
-href="https://drive.google.com/drive/folders/1vCpXlgufFSmUJyJj7qVpS10hlOPE5GhJ?usp=drive_link"
-target="_blank">
-Abrir Google Drive
-</a>
-
-</div>
-
-</div>
-
-</div>
-</div>
+            <div id="songs" class="section">
+                <h2>Repositorio de Canciones</h2>
+                <div class="songs-box">
+                    <p>Acceso privado al Drive del proyecto BENITEZ.</p>
+                    <a class="drive-btn" 
+                       href="https://drive.google.com/drive/folders/1vCpXlgufFSmUJyJj7qVpS10hlOPE5GhJ?usp=drive_link" 
+                       target="_blank">
+                       Abrir Google Drive
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script>
-
 document.addEventListener("DOMContentLoaded",function(){
+    const USER="equipo";
+    const PASS="benitez2026";
 
-const USER="equipo";
-const PASS="benitez2026";
+    const login=document.getElementById("login");
+    const dashboard=document.getElementById("dashboard");
+    const userInp = document.getElementById("user");
+    const passInp = document.getElementById("pass");
+    const loginBtn = document.getElementById("loginBtn");
+    const error = document.getElementById("error");
 
-const login=document.getElementById("login");
-const dashboard=document.getElementById("dashboard");
+    loginBtn.onclick=function(){
+        if(userInp.value===USER && passInp.value===PASS){
+            login.style.display="none";
+            dashboard.style.display="block";
+            localStorage.setItem("auth","true");
+        }else{
+            error.innerText="Acceso incorrecto";
+        }
+    };
 
-loginBtn.onclick=function(){
+    if(localStorage.getItem("auth")==="true"){
+        login.style.display="none";
+        dashboard.style.display="block";
+    }
 
-if(user.value===USER && pass.value===PASS){
-login.style.display="none";
-dashboard.style.display="block";
-localStorage.setItem("auth","true");
-}else{
-error.innerText="Acceso incorrecto";
-}
-};
+    document.getElementById("logoutBtn").onclick=function(){
+        localStorage.removeItem("auth");
+        location.reload();
+    };
 
-if(localStorage.getItem("auth")==="true"){
-login.style.display="none";
-dashboard.style.display="block";
-}
+    document.querySelectorAll(".menu a").forEach(btn=>{
+        btn.onclick=function(){
+            document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));
+            document.getElementById(btn.dataset.section).classList.add("active");
+        };
+    });
 
-logoutBtn.onclick=function(){
-localStorage.removeItem("auth");
-location.reload();
-};
-
-document.querySelectorAll(".menu a").forEach(btn=>{
-btn.onclick=function(){
-document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));
-document.getElementById(btn.dataset.section).classList.add("active");
-};
+    document.getElementById("logoBtn").onclick=function(){
+        document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));
+        document.getElementById("team").classList.add("active");
+    };
 });
-
-logoBtn.onclick=function(){
-document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));
-document.getElementById("team").classList.add("active");
-};
-
-});
-
 </script>
 
 </body>

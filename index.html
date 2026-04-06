@@ -3,160 +3,201 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BENÍTEZ | Staff</title>
 
-<title>BENITEZ</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Creepster&family=Bebas+Neue&display=swap" rel="stylesheet">
 
 <style>
 
-/* ===== BASE ===== */
+:root{
+--red:#ff0000;
+--black:#000;
+--dark:#0a0a0a;
+}
+
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:'Inter',sans-serif;
+font-family:'Poppins',sans-serif;
 }
 
 body{
-background:#050505;
+background:#000;
 color:white;
-overflow-x:hidden;
 }
 
-/* ===== HEADER ===== */
-header{
+/* LOGIN */
+
+#login-screen{
 position:fixed;
-top:0;
 width:100%;
-padding:20px;
-text-align:center;
-font-size:22px;
-letter-spacing:4px;
-font-weight:700;
-background:rgba(0,0,0,0.75);
-backdrop-filter:blur(12px);
-border-bottom:1px solid rgba(255,0,0,0.2);
-color:#ff1a1a;
-cursor:pointer;
-z-index:1000;
-}
-
-/* ===== CONTAINER ===== */
-.container{
-max-width:900px;
-margin:auto;
-padding:110px 20px 40px;
-}
-
-/* ===== MENU ===== */
-.menu{
+height:100%;
 display:flex;
-flex-direction:column;
-gap:28px;
+justify-content:center;
+align-items:center;
+background:#000;
+z-index:999;
 }
 
-/* ===== CARDS ===== */
-.card{
-background:linear-gradient(145deg,#0d0d0d,#141414);
-border-radius:22px;
-padding:55px 30px;
+.login-box{
+background:#111;
+padding:40px;
+border-radius:15px;
+width:90%;
+max-width:340px;
 text-align:center;
-cursor:pointer;
-transition:0.35s;
-border:1px solid rgba(255,0,0,0.15);
+border:1px solid #222;
 }
 
-.card:hover{
-transform:translateY(-6px);
-box-shadow:0 0 25px rgba(255,0,0,0.25);
-border:1px solid rgba(255,0,0,0.4);
+.login-box h1{
+font-family:'Creepster';
+color:var(--red);
+font-size:42px;
+margin-bottom:20px;
 }
 
-.icon{
-font-size:72px;
-margin-bottom:18px;
-}
-
-.title{
-font-size:30px;
-font-weight:600;
-color:#ff1a1a;
-}
-
-/* ===== SECTIONS ===== */
-.section{
-display:none;
-animation:fade 0.4s ease;
-}
-
-.section.active{
-display:block;
-}
-
-@keyframes fade{
-from{opacity:0;transform:translateY(15px);}
-to{opacity:1;transform:translateY(0);}
-}
-
-/* ===== TEAM ===== */
-.member{
-background:#0f0f0f;
-padding:20px;
-border-radius:14px;
-margin-bottom:14px;
-border:1px solid rgba(255,0,0,0.15);
-font-size:18px;
-transition:0.25s;
-}
-
-.member:hover{
-background:#151515;
-border:1px solid rgba(255,0,0,0.4);
-}
-
-/* ===== BUTTON ===== */
-.back{
-margin-top:25px;
+input{
 width:100%;
 padding:14px;
-background:#ff1a1a;
+margin:10px 0;
+background:#000;
+border:1px solid #333;
 color:white;
+border-radius:6px;
+}
+
+button{
+width:100%;
+padding:14px;
+background:var(--red);
 border:none;
-border-radius:12px;
+color:white;
 font-weight:600;
 cursor:pointer;
-transition:0.3s;
+border-radius:6px;
 }
 
-.back:hover{
-background:#cc0000;
+/* APP */
+
+#dashboard{display:none;}
+
+.topbar{
+padding:20px;
+text-align:center;
+border-bottom:1px solid #111;
+font-family:'Creepster';
+font-size:32px;
+color:var(--red);
 }
 
-/* ===== LINK CARD ===== */
-.link-card{
-text-decoration:none;
-color:white;
-display:block;
+.menu{
+display:flex;
+justify-content:center;
+gap:20px;
+padding:20px;
 }
 
-/* ===== MOBILE ===== */
-@media(max-width:600px){
+.menu-btn{
+background:#0d0d0d;
+border:1px solid #222;
+padding:18px;
+border-radius:14px;
+cursor:pointer;
+width:160px;
+text-align:center;
+transition:.3s;
+}
+
+.menu-btn:hover{
+border:1px solid var(--red);
+}
+
+.menu-btn.active{
+border:1px solid var(--red);
+background:#140000;
+}
 
 .icon{
-font-size:90px;
+font-size:70px;
+color:white;
+filter: grayscale(100%) brightness(200%);
+margin-bottom:10px;
 }
 
-.title{
-font-size:34px;
+.menu-title{
+font-family:'Bebas Neue';
+font-size:26px;
+letter-spacing:1px;
 }
+
+/* CONTENT */
+
+.content{
+padding:25px;
+max-width:900px;
+margin:auto;
+}
+
+.section{display:none;}
+.section.active{display:block;}
 
 .card{
-padding:65px 25px;
+background:#0d0d0d;
+border:1px solid #222;
+padding:25px;
+border-radius:12px;
+margin-bottom:20px;
 }
 
-.member{
-font-size:20px;
+h2{
+font-family:'Bebas Neue';
+color:var(--red);
+font-size:40px;
+margin-bottom:20px;
+}
+
+.role{
+color:var(--red);
+font-size:12px;
+margin-bottom:6px;
+font-weight:bold;
+}
+
+.drive-btn{
+display:inline-block;
+margin-top:20px;
+background:var(--red);
+color:white;
+padding:15px 30px;
+text-decoration:none;
+border-radius:6px;
+font-weight:bold;
+}
+
+.logout{
+position:fixed;
+top:15px;
+right:15px;
+color:var(--red);
+cursor:pointer;
+font-size:12px;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.menu{
+flex-direction:row;
+}
+
+.menu-btn{
+width:45%;
+}
+
+.icon{
+font-size:60px;
 }
 
 }
@@ -166,85 +207,133 @@ font-size:20px;
 
 <body>
 
-<header onclick="goHome()">BENITEZ</header>
+<!-- LOGIN -->
+<div id="login-screen">
+<div class="login-box">
+<h1>BENÍTEZ</h1>
+<input id="user" placeholder="Usuario">
+<input id="pass" type="password" placeholder="Contraseña">
+<button onclick="login()">ENTRAR</button>
+<p id="error" style="color:red;font-size:12px;margin-top:10px;"></p>
+</div>
+</div>
 
-<div class="container">
+<!-- APP -->
+<div id="dashboard">
 
-<!-- HOME -->
-<div id="home" class="menu">
+<div class="logout" onclick="logout()">CERRAR SESIÓN</div>
 
-<div class="card" onclick="openSection('equipo')">
+<div class="topbar">BENÍTEZ</div>
+
+<div class="menu">
+
+<div class="menu-btn active" id="btnEquipo" onclick="show('equipo')">
 <div class="icon">👥</div>
-<div class="title">Equipo</div>
+<div class="menu-title">EQUIPO</div>
 </div>
 
-<div class="card" onclick="openSection('canciones')">
+<div class="menu-btn" id="btnCanciones" onclick="show('canciones')">
 <div class="icon">🎵</div>
-<div class="title">Canciones</div>
+<div class="menu-title">CANCIONES</div>
 </div>
 
 </div>
+
+<div class="content">
 
 <!-- EQUIPO -->
-<div id="equipo" class="section">
+<div id="equipo" class="section active">
 
-<h2 style="margin-bottom:20px;color:#ff1a1a;">Equipo BENITEZ</h2>
+<h2>Equipo BENÍTEZ</h2>
 
-<div class="member">Pablo Mazo — Manager</div>
-<div class="member">Tomas Gallego — Marketing</div>
-<div class="member">Sebastian Muñoz — Camarógrafo</div>
-<div class="member">Yerson — Director Logístico</div>
-<div class="member">Angelo Tamayo — Asistente Personal</div>
-<div class="member">Andrés Parra — Management</div>
+<div class="card">
+<div class="role">MANAGER</div>
+<h3>MAZO</h3>
+<p>Presencia en eventos, networking y movimiento real del proyecto.</p>
+</div>
 
-<button class="back" onclick="goHome()">Volver</button>
+<div class="card">
+<div class="role">MARKETING / CO-MANAGER</div>
+<h3>TOMÁS</h3>
+<p>Convierte todo en percepción, estrategia y crecimiento visual.</p>
+</div>
+
+<div class="card">
+<div class="role">CÁMARA & PERFORMANCE</div>
+<h3>SEBASTIÁN</h3>
+<p>Captura cada momento clave y potencia la imagen del artista.</p>
+</div>
+
+<div class="card">
+<h3>Staff de Apoyo</h3>
+<p>• Andrés Parra — DJ & Control Operativo</p>
+<p>• Yerson — Logística</p>
+<p>• Angelo — Asistente Personal</p>
+</div>
 
 </div>
 
 <!-- CANCIONES -->
 <div id="canciones" class="section">
 
-<h2 style="margin-bottom:20px;color:#ff1a1a;">Canciones</h2>
+<h2>Contenido Privado</h2>
 
-<a class="link-card"
+<div class="card" style="text-align:center;">
+<p>Acceso directo al Drive del proyecto.</p>
+
+<a class="drive-btn"
 href="https://drive.google.com/drive/folders/1vCpXlgufFSmUJyJj7qVpS10hlOPE5GhJ?usp=drive_link"
 target="_blank">
-
-<div class="card">
-<div class="icon">🎧</div>
-<div class="title">Abrir Drive</div>
-</div>
-
+ABRIR DRIVE
 </a>
 
-<button class="back" onclick="goHome()">Volver</button>
+</div>
 
 </div>
 
+</div>
 </div>
 
 <script>
 
-function openSection(id){
-document.getElementById("home").style.display="none";
+const USER="equipo";
+const PASS="benitez2026";
 
-document.querySelectorAll(".section").forEach(sec=>{
-sec.classList.remove("active");
-});
+function login(){
+let u=document.getElementById("user").value;
+let p=document.getElementById("pass").value;
+
+if(u===USER && p===PASS){
+localStorage.setItem("bnz","ok");
+load();
+}else{
+document.getElementById("error").innerText="Acceso incorrecto";
+}
+}
+
+function logout(){
+localStorage.removeItem("bnz");
+location.reload();
+}
+
+function load(){
+if(localStorage.getItem("bnz")==="ok"){
+document.getElementById("login-screen").style.display="none";
+document.getElementById("dashboard").style.display="block";
+}
+}
+
+function show(id){
+document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));
+document.querySelectorAll(".menu-btn").forEach(b=>b.classList.remove("active"));
 
 document.getElementById(id).classList.add("active");
-window.scrollTo(0,0);
+
+if(id==="equipo") document.getElementById("btnEquipo").classList.add("active");
+if(id==="canciones") document.getElementById("btnCanciones").classList.add("active");
 }
 
-function goHome(){
-document.getElementById("home").style.display="flex";
-
-document.querySelectorAll(".section").forEach(sec=>{
-sec.classList.remove("active");
-});
-
-window.scrollTo(0,0);
-}
+window.onload=load;
 
 </script>
 
